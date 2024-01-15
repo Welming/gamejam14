@@ -6,37 +6,32 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public InputAction playerControls;
+    public InputActionMap playerControls;
     public Rigidbody2D player;
     [Range(1.0f, 8.0f)]
     public float moveSpeed = 3;
-    private Vector2 moveDirection = Vector2.zero; 
+    private Vector2 moveDirection = Vector2.zero;
 
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveCharacter(InputAction.CallbackContext context)
     {
-        moveDirection = playerControls.ReadValue<Vector2>();
+        if(context.performed)
+        {
+            moveDirection = context.ReadValue<Vector2>();
+            player.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        if (context.canceled)
+        {
+            moveDirection = Vector2.zero;
+        }
     }
 
     private void FixedUpdate()
     {
         player.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
-
 }
