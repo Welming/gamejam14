@@ -14,6 +14,10 @@ public class GameController : MonoBehaviour
     public float cameraDistance;
     [InspectorName("Camera Smoothness"), Range(0.0f, 1.0f)]
     public float cameraSmoothness;
+    [InspectorName("Smoothness Ratio"), Range(0.0f, 5.0f)]
+    public float smoothnessRatio;
+    [InspectorName("Close Enough Distance"), Range(0.0f, 5.0f)]
+    public float cameraCloseEnoughDistance;
 
     private Vector3 cameraVelocity = Vector3.zero;
 
@@ -42,5 +46,10 @@ public class GameController : MonoBehaviour
         {
             mainCamera.transform.position = Vector3.SmoothDamp(mainCamera.transform.position, new Vector3(player.transform.Find("Model").transform.position.x, player.transform.Find("Model").transform.position.y, mainCamera.transform.position.z), ref cameraVelocity, cameraSmoothness);
         }
+        else if (Vector2.Distance(mainCamera.transform.position, player.transform.Find("Model").transform.position) > cameraCloseEnoughDistance)
+        {
+            mainCamera.transform.position = Vector3.SmoothDamp(mainCamera.transform.position, new Vector3(player.transform.Find("Model").transform.position.x, player.transform.Find("Model").transform.position.y, mainCamera.transform.position.z), ref cameraVelocity, (cameraSmoothness * smoothnessRatio));
+        }
+
     }
 }
