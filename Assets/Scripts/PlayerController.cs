@@ -48,6 +48,10 @@ public class PlayerController : MonoBehaviour
             {
                 moveMemory.x = context.ReadValue<Vector2>().x;
             }
+            if (context.ReadValue<Vector2>().x != 0 && context.ReadValue<Vector2>().y == 0)
+            {
+                moveMemory.y = -1;
+            }
             rigidBody.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             ResetAnimatorParameters("Walk");
             animator.SetFloat("X", moveMemory.x);
