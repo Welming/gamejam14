@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 4058133537
     locked: 0
+  - name: Turrets
+    uniqueID: 3710338787
+    locked: 0
   - name: Middle
     uniqueID: 1817035983
     locked: 0

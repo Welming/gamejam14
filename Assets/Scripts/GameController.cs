@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 {
     public GameObject mainCamera;
     public GameObject player;
+    public GameObject turretFloorGlowLight;
     public InputAction clickControls;
     [InspectorName("Camera Distance"),Range(0.0f, 5.0f)]
     public float cameraDistance;
@@ -18,6 +19,7 @@ public class GameController : MonoBehaviour
     public float smoothnessRatio;
     [InspectorName("Close Enough Distance"), Range(0.0f, 5.0f)]
     public float cameraCloseEnoughDistance;
+
 
     private Vector3 cameraVelocity = Vector3.zero;
 
@@ -42,7 +44,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(Vector2.Distance(mainCamera.transform.position, player.transform.Find("Model").transform.position) > cameraDistance)
+        turretFloorGlowLight.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f);
+
+        if (Vector2.Distance(mainCamera.transform.position, player.transform.Find("Model").transform.position) > cameraDistance)
         {
             mainCamera.transform.position = Vector3.SmoothDamp(mainCamera.transform.position, new Vector3(player.transform.Find("Model").transform.position.x, player.transform.Find("Model").transform.position.y, mainCamera.transform.position.z), ref cameraVelocity, cameraSmoothness);
         }
