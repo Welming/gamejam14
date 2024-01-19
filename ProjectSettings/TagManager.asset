@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cauldron
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -46,7 +47,7 @@ TagManager:
     uniqueID: 4058133537
     locked: 0
   - name: Turrets
-    uniqueID: 3710338787
+    uniqueID: 1256521395
     locked: 0
   - name: Middle
     uniqueID: 1817035983
