@@ -8,6 +8,8 @@ public class TurretController : MonoBehaviour
     [SerializeField]
     private float hoverGlowTimer;
 
+    public GameObject menuOption;
+
     public List<GameObject> particleEffects;
     [SerializeField]
     private List<ParticleSystem> particleSystems;
@@ -50,7 +52,6 @@ public class TurretController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if(!activatedTurret) HoverGlowTimer();

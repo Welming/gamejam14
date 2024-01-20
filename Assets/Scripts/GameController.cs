@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
     public int cycleLength;
     private float cycleTimer;
 
+    public bool turretMenuOpened = false;
+
     [SerializeField]
     private bool waveActive = true;
 
@@ -78,6 +80,8 @@ public class GameController : MonoBehaviour
             rayHit.collider.gameObject.GetComponent<TurretController>().HoverGlow(hoverGlowInitializedTimer);
         }
     }
+
+
 
     void WavesCycling()
     {
