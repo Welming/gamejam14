@@ -13,18 +13,33 @@ public class GameController : MonoBehaviour
     public GameObject turretFloorGlowLight;
     public InputAction clickControls;
 
-    [SerializeField]
-    private int healthPoints;
+    [Range(0.0f, 3.0f)]
+    public float period = 1;
+    [Range(0.0f, 3.0f)]
+    public float periodModifier = 1;
+    [Range(0.0f, 10.0f)]
+    public float spawnersScalingSpeed = 0.0f;
+    [Range(5, 100)]
+    public int spawnersMaximumScaling = 10;
+    [Range(0, 10)]
+    public int cycleLength;
+    private float cycleTimer;
 
-    [InspectorName("Camera Distance"),Range(0.0f, 5.0f)]
+    [SerializeField]
+    private bool waveActive = true;
+
+    [SerializeField]
+    private int healthPoints = 10;
+
+    [Range(0.0f, 5.0f)]
     public float cameraDistance;
-    [InspectorName("Camera Smoothness"), Range(0.0f, 1.0f)]
+    [Range(0.0f, 1.0f)]
     public float cameraSmoothness;
-    [InspectorName("Smoothness Ratio"), Range(0.0f, 5.0f)]
+    [Range(0.0f, 5.0f)]
     public float smoothnessRatio;
-    [InspectorName("Close Enough Distance"), Range(0.0f, 5.0f)]
+    [Range(0.0f, 5.0f)]
     public float cameraCloseEnoughDistance;
-    [InspectorName("Glow Timer"), Range(0.0f, 2.0f)]
+    [Range(0.0f, 2.0f)]
     public float hoverGlowInitializedTimer;
 
     private Vector3 cameraVelocity = Vector3.zero;
@@ -64,9 +79,23 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    void WavesCycling()
+    {
+        if(cycleTimer <= (cycleLength * 60))
+        {
+            cycleTimer += Time.deltaTime;
+        }
+        else
+        {
+            waveActive = false;
+        }
+    }
+
     void FixedUpdate()
     {
+        // Waves
+        WavesCycling();
+
         // Turret
         turretFloorGlowLight.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f);
         RaycastToTurret();
