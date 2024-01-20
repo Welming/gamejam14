@@ -47482,6 +47482,11 @@ MonoBehaviour:
   minIntensity: 1.24
   deltaIntensity: 0.619
   flickerSpeed: 0.254
+--- !u!1 &1471335141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4362095630688467698, guid: 70527b953da113d41b761746ac96f1d9, type: 3}
+  m_PrefabInstance: {fileID: 3887901578366490194}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1486999772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3397482536910856130, guid: 7406464c4863c52499431c4fe5d685e5, type: 3}
@@ -56012,6 +56017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Default Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 4817564608448975191, guid: 70527b953da113d41b761746ac96f1d9, type: 3}
+      propertyPath: turretModel
+      value: 
+      objectReference: {fileID: 1471335141}
     - target: {fileID: 7721871670073399278, guid: 70527b953da113d41b761746ac96f1d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.5

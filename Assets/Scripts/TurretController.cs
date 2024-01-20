@@ -8,6 +8,8 @@ public class TurretController : MonoBehaviour
     private List<GameObject> enemyList;
     private CircleCollider2D targetArea;
 
+    public GameObject turretModel;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -26,6 +28,14 @@ public class TurretController : MonoBehaviour
     {
         Debug.Log("Goodbye");
         enemyList.Remove(newGuy.gameObject.transform.parent.gameObject);
+    }
+
+    private void Update()
+    {
+        if(enemyList.Count > 0)
+        {
+            turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
+        }
     }
 
 }
