@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretController : MonoBehaviour
+public class TurretLocationController : MonoBehaviour
 {
     private bool activatedTurret;
     [SerializeField]
@@ -24,6 +24,8 @@ public class TurretController : MonoBehaviour
             emission.enabled = false;
         }
     }
+
+
 
     public void HoverGlow(float glowTimer)
     {

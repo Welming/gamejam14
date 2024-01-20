@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
     public int cycleLength;
     private float cycleTimer;
 
+    [Range(0.0f, 10.0f)]
+    public float spriteScaling = 1.0f;
+
     public bool turretMenuOpened = false;
 
     [SerializeField]
@@ -77,7 +80,7 @@ public class GameController : MonoBehaviour
 
         if (rayHit.collider.gameObject.CompareTag("Turret"))
         {
-            rayHit.collider.gameObject.GetComponent<TurretController>().HoverGlow(hoverGlowInitializedTimer);
+            rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
         }
     }
 
