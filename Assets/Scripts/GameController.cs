@@ -27,11 +27,13 @@ public class GameController : MonoBehaviour
 
     [Range(0.0f, 10.0f)]
     public float spriteScaling = 1.0f;
+    [Range(0.0f, 1.0f)]
+    public float spriteScalingSpeed = 1.0f;
 
     public bool turretMenuOpened = false;
 
-    [SerializeField]
-    private bool waveActive = true;
+    // [SerializeField]
+    // private bool waveActive = true;
 
     [SerializeField]
     private int healthPoints = 10;
@@ -53,11 +55,27 @@ public class GameController : MonoBehaviour
     {
         if (!context.started) return;
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue()));
-        if (!rayHit.collider) return;
-
-        if (rayHit.collider.gameObject.CompareTag("Cauldron"))
+        if (!rayHit.collider) 
         {
-            rayHit.collider.gameObject.GetComponent<Animator>().SetBool("Ignited", true);
+            turretMenuOpened = false;
+            return; 
+        }
+
+        if (rayHit.collider.gameObject.CompareTag("Turret") && !turretMenuOpened)
+        {
+            if (rayHit.collider.gameObject.GetComponent<TurretLocationController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<TurretLocationController>().currentFocus = true;
+                turretMenuOpened = true;
+            }
+        }
+
+        if (rayHit.collider.gameObject.CompareTag("Option"))
+        {
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
         }
     }
 
@@ -94,7 +112,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            waveActive = false;
+            // waveActive = false;
         }
     }
 

@@ -6,22 +6,44 @@ public class TurretController : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> enemyList;
-    private CircleCollider2D targetArea;
 
     public GameObject turretModel;
 
+    [Range(0.0f, 10.0f)]
+    public float turretAttackSpeed;
+    public float turretDamage;
 
-    // Start is called before the first frame update
+    private float attackTimer;
+
+    public bool aoeTurret = false;
+
     void Awake()
     {
-        targetArea = GetComponent<CircleCollider2D>();
         
     }
 
-    private void OnTriggerEnter2D(Collider2D newGuy)
+    void TurretShooting()
     {
-        Debug.Log("Hello");
-        enemyList.Add(newGuy.gameObject.transform.parent.gameObject);
+        if (turretAttackSpeed <= 0) turretAttackSpeed = 0.01f;
+
+        if (attackTimer <= (1 / turretAttackSpeed))
+        {
+            attackTimer += Time.deltaTime;
+        }
+        else
+        {
+            attackTimer = 0;
+            turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D newGuy)
+    {
+        if(!enemyList.Contains(newGuy.gameObject.transform.parent.gameObject))
+        {
+            Debug.Log("Hello");
+            enemyList.Add(newGuy.gameObject.transform.parent.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D newGuy)
@@ -32,10 +54,7 @@ public class TurretController : MonoBehaviour
 
     private void Update()
     {
-        if(enemyList.Count > 0)
-        {
-            turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
-        }
+        if (!aoeTurret && enemyList.Count > 0) TurretShooting();
     }
 
 }

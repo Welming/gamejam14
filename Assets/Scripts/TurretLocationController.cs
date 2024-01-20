@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TurretLocationController : MonoBehaviour
 {
-    private bool activatedTurret;
     [SerializeField]
     private float hoverGlowTimer;
 
-    public GameObject menuOption;
+    public bool currentFocus;
+    public GameObject menuOptions;
 
     public List<GameObject> particleEffects;
     [SerializeField]
@@ -25,7 +25,20 @@ public class TurretLocationController : MonoBehaviour
         }
     }
 
+    public void CreateTurret()
+    {
 
+    }
+
+    public void ActivateButton(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                CreateTurret();
+                break;
+        }
+    }
 
     public void HoverGlow(float glowTimer)
     {
@@ -56,6 +69,21 @@ public class TurretLocationController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(!activatedTurret) HoverGlowTimer();
+        if(currentFocus)
+        {
+            if (!menuOptions.activeSelf) 
+            {
+                menuOptions.SetActive(true);
+            }
+        }
+        else
+        {
+            if (menuOptions.activeSelf)
+            {
+                menuOptions.SetActive(false);
+            }
+        }
+
+        HoverGlowTimer();
     }
 }
