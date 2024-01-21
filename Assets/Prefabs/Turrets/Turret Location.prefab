@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5716813178861580938}
-  - component: {fileID: 4745082174178384801}
+  - component: {fileID: 8329632888247342656}
   m_Layer: 0
   m_Name: Model
   m_TagString: Turret
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 3410168564692191485}
   m_Father: {fileID: 4455508994180823851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4745082174178384801
+--- !u!212 &8329632888247342656
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 182a96f01ff35694f9f975d5bd50c5f6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.4627451}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10005,6 +10005,7 @@ GameObject:
   - component: {fileID: 1130486834673461367}
   - component: {fileID: 7864137710973048472}
   - component: {fileID: 3011403742794304135}
+  - component: {fileID: 6727252329410500516}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -10165,6 +10166,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 7864137710973048472}
   m_maskType: 0
+--- !u!114 &6727252329410500516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631424836250379823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4eb80b19bf5c9488f9f5638933b40e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
 --- !u!1 &6962116431510146919
 GameObject:
   m_ObjectHideFlags: 0
@@ -10335,7 +10349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530730116622664970}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -10360,6 +10374,7 @@ MonoBehaviour:
   hoverGlowTimer: 0
   currentFocus: 0
   menuOptions: {fileID: 5357071255088851162}
+  menuOptionsList: []
   turretLocationModel: {fileID: 2445092301191083407}
   particleEffects:
   - {fileID: 3729645698708421968}
@@ -10394,7 +10409,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
