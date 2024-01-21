@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     private GameObject playerModel;
     public GameObject turretFloorGlowLight;
     public InputAction clickControls;
+    public TMP_FontAsset font;
 
     [Range(0.0f, 3.0f)]
     public float period = 1;

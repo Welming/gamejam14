@@ -36,6 +36,7 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("FindTarget", 0.0f, 0.1f);
+        gameController = GameObject.Find("Game Controller");
     }
 
     void TurretShooting()
@@ -94,7 +95,6 @@ public class TurretController : MonoBehaviour
     {
         rangeCircle.transform.localScale = new Vector2((turretRange * 4), (turretRange * 4));
 
-        gameController = GameObject.Find("Game Controller");
         gameController.GetComponent<GameController>().MenuOptionsCheck(currentFocus, menuOptions, menuOptionsList);
 
         if (!aoeTurret && enemyList.Count > 0) TurretShooting();
