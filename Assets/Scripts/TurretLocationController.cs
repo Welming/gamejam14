@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class TurretLocationController : MonoBehaviour
 {
+    public GameObject gameController;
+
     [SerializeField]
     private float hoverGlowTimer;
 
     public bool currentFocus;
     public GameObject menuOptions;
+    public List<GameObject> menuOptionsList;
 
+    public GameObject turretLocationModel;
     public List<GameObject> particleEffects;
+
     [SerializeField]
     private List<ParticleSystem> particleSystems;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("Game Controller");
+
         for (int e = 0;e < particleEffects.Count;e++)
         {
             particleSystems.Add(particleEffects[e].GetComponent<ParticleSystem>());
@@ -40,6 +47,8 @@ public class TurretLocationController : MonoBehaviour
         }
     }
 
+
+
     public void HoverGlow(float glowTimer)
     {
         hoverGlowTimer = glowTimer;
@@ -51,6 +60,7 @@ public class TurretLocationController : MonoBehaviour
         {
             hoverGlowTimer -= Time.deltaTime;
 
+            
             for (int e = 0; e < particleEffects.Count; e++)
             {
                 var emission = particleSystems[e].emission;
@@ -69,20 +79,7 @@ public class TurretLocationController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(currentFocus)
-        {
-            if (!menuOptions.activeSelf) 
-            {
-                menuOptions.SetActive(true);
-            }
-        }
-        else
-        {
-            if (menuOptions.activeSelf)
-            {
-                menuOptions.SetActive(false);
-            }
-        }
+        gameController.GetComponent<GameController>().MenuOptionsCheck(currentFocus, menuOptions, menuOptionsList);
 
         HoverGlowTimer();
     }

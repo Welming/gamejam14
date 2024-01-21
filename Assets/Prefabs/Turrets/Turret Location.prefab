@@ -10356,9 +10356,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b86a4eef7034ba48a8c24f008a6b176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
   hoverGlowTimer: 0
   currentFocus: 0
   menuOptions: {fileID: 5357071255088851162}
+  turretLocationModel: {fileID: 2445092301191083407}
   particleEffects:
   - {fileID: 3729645698708421968}
   - {fileID: 5500414005696325358}

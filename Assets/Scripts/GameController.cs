@@ -67,6 +67,7 @@ public class GameController : MonoBehaviour
             {
                 rayHit.collider.gameObject.GetComponent<TurretLocationController>().currentFocus = true;
                 turretMenuOpened = true;
+                return;
             }
         }
 
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour
             if (rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+                return;
             }
         }
     }
@@ -83,6 +85,41 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerModel = player.transform.Find("Model").gameObject;
+    }
+
+    public void MenuOptionsCheck(bool focus, GameObject options, List<GameObject> optionsList)
+    {
+        if (focus && turretMenuOpened)
+        {
+            if (!options.activeSelf)
+            {
+                options.SetActive(true);
+            }
+        }
+        else
+        {
+            if (options.activeSelf)
+            {
+                for(int e = 0;e < optionsList.Count;e++)
+                {
+                    if(e == 0)
+                    {
+                        if (!optionsList[e].activeSelf)
+                        {
+                            optionsList[e].SetActive(true);
+                        }
+                    }
+                    else
+                    {
+                        if (optionsList[e].activeSelf)
+                        {
+                            optionsList[e].SetActive(false);
+                        }
+                    }
+                }
+                options.SetActive(false);
+            }
+        }
     }
 
     public void TakeDamage()
@@ -101,8 +138,6 @@ public class GameController : MonoBehaviour
             rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
         }
     }
-
-
 
     void WavesCycling()
     {

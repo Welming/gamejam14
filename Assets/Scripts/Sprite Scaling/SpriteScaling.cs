@@ -15,6 +15,7 @@ public class SpriteScaling : MonoBehaviour
     private void OnEnable()
     {
         gameObject.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        scalingMultiplier = 1.0f;
     }
 
         private void Update()

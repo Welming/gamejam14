@@ -77,5 +77,9 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         if (initiated) MoveOnPath();
+        if(enemyHealthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

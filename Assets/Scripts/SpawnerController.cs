@@ -48,8 +48,8 @@ public class SpawnerController : MonoBehaviour
             spawnTimer = 0;
             GameObject enemy = Instantiate(enemyPrefabList[enemyIndex], gameObject.transform);
             enemy.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
-            enemy.GetComponent<EnemyController>().enemyMovementSpeed *= Mathf.Ceil(enemySpeedModifier * enemyScaling);
-            enemy.GetComponent<EnemyController>().enemyHealthPoints *= (int)Mathf.Ceil(enemyHealthModifier * enemyScaling);
+            enemy.GetComponent<EnemyController>().enemyMovementSpeed = (enemySpeedModifier * enemyScaling * enemy.GetComponent<EnemyController>().enemyMovementSpeed);
+            enemy.GetComponent<EnemyController>().enemyHealthPoints = (int)Mathf.Ceil(enemyHealthModifier * enemyScaling * enemy.GetComponent<EnemyController>().enemyHealthPoints);
             enemy.GetComponent<EnemyController>().directionsList = directionsList;
             enemy.GetComponent<EnemyController>().initiated = true;
             enemyQuantityLeft--;
