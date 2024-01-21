@@ -14,8 +14,10 @@ public class TurretController : MonoBehaviour
 
     [Range(0.0f, 10.0f)]
     public float turretAttackSpeed;
-    [Range(0.01f, 1.0f)]
+    [Range(0.0f, 100.0f)]
     public float turretProjectileSpeed;
+    [Range(0.01f, 5.0f)]
+    public float turretProjectileScale = 1.0f;
     [Range(0, 100)]
     public int turretDamage;
     [Range(0.0f, 10.0f)]
@@ -24,11 +26,10 @@ public class TurretController : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float projectileSpawnYOffset;
 
-    public List<GameObject> enemyList;
-
     public bool currentFocus;
 
     private float attackTimer;
+    public List<GameObject> enemyList;
 
     public bool aoeTurret = false;
 
@@ -51,9 +52,9 @@ public class TurretController : MonoBehaviour
             turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
             GameObject newProjectile = Instantiate(projectileType, gameObject.transform);
             newProjectile.GetComponent<ProjectileController>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + projectileSpawnYOffset, gameObject.transform.position.z);
-            newProjectile.GetComponent<ProjectileController>().projectileSpeed = turretAttackSpeed;
+            newProjectile.GetComponent<ProjectileController>().projectileSpeed = turretProjectileSpeed;
             newProjectile.GetComponent<ProjectileController>().projectileDamage = turretDamage;
-
+            newProjectile.GetComponent<ProjectileController>().transform.localScale *= turretProjectileScale;
             for (int e = 0; e < enemyList.Count; e++)
             {
                 if (enemyList[e] == null)
@@ -93,9 +94,9 @@ public class TurretController : MonoBehaviour
     {
         rangeCircle.transform.localScale = new Vector2((turretRange * 4), (turretRange * 4));
 
+        gameController = GameObject.Find("Game Controller");
         gameController.GetComponent<GameController>().MenuOptionsCheck(currentFocus, menuOptions, menuOptionsList);
 
         if (!aoeTurret && enemyList.Count > 0) TurretShooting();
     }
-
 }

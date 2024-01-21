@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class OptionHover : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float hoverGlowTimer;
+
+    void HoverGlowTimer()
     {
-        
+        if (hoverGlowTimer > 0.0f)
+        {
+            hoverGlowTimer -= Time.deltaTime;
+
+        }
+        else
+        {
+
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        HoverGlowTimer();
     }
 }

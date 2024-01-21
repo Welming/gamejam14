@@ -127,13 +127,18 @@ public class GameController : MonoBehaviour
         healthPoints--;
     }
 
-    void RaycastToTurret()
+    void RaycastToMouse()
     {
         // Turret Glow
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) return;
 
         if (rayHit.collider.gameObject.CompareTag("Turret"))
+        {
+            rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
+        }
+
+        if (rayHit.collider.gameObject.CompareTag("Option"))
         {
             rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
         }
@@ -158,7 +163,7 @@ public class GameController : MonoBehaviour
 
         // Turret
         turretFloorGlowLight.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f);
-        RaycastToTurret();
+        RaycastToMouse();
 
         if (Vector2.Distance(mainCamera.transform.position, playerModel.transform.position) > cameraDistance)
         {

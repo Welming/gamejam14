@@ -14,14 +14,14 @@ public class ProjectileController : MonoBehaviour
     public int projectileDamage;
     public Vector3 startPosition;
 
-    private float lerpDistanceValue;
-
     public float distanceBeforeImpact = 0.05f;
 
     private void TrackEnemy()
     {
-        gameObject.transform.position = Vector3.Lerp(startPosition, targetObject.transform.position, lerpDistanceValue);
-        if(Vector2.Distance(gameObject.transform.position, targetObject.transform.position) <= distanceBeforeImpact || lerpDistanceValue >= 1)
+        projectileSpeed += projectileSpeed * Time.deltaTime;
+        float step = projectileSpeed * Time.deltaTime;
+        gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, targetObject.transform.position, step);
+        if(Vector2.Distance(gameObject.transform.position, targetObject.transform.position) <= distanceBeforeImpact)
         {
             targetObject.GetComponent<EnemyController>().enemyHealthPoints -= projectileDamage;
             Destroy(gameObject);
@@ -30,8 +30,6 @@ public class ProjectileController : MonoBehaviour
 
     void Update()
     {
-        lerpDistanceValue += projectileSpeed * Time.deltaTime;
-
         if (initiated && targetObject != null)
         {
             TrackEnemy();

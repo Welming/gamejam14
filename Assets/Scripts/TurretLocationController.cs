@@ -47,8 +47,6 @@ public class TurretLocationController : MonoBehaviour
         }
     }
 
-
-
     public void HoverGlow(float glowTimer)
     {
         hoverGlowTimer = glowTimer;
