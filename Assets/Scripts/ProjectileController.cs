@@ -30,6 +30,15 @@ public class ProjectileController : MonoBehaviour
 
     void Update()
     {
+        if(targetObject != null)
+        {
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         if (initiated && targetObject != null)
         {
             TrackEnemy();

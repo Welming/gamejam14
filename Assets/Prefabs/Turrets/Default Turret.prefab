@@ -10426,10 +10426,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7721871670073399278}
+  - component: {fileID: 7928984969671095320}
   - component: {fileID: 4817564608448975191}
   m_Layer: 0
   m_Name: Default Turret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10454,6 +10455,51 @@ Transform:
   - {fileID: 5996216401108996275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &7928984969671095320
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583043973681722468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000029802322, y: -0.18681236}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.76199585, y: 0.6263753}
+  m_EdgeRadius: 0
 --- !u!114 &4817564608448975191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10473,13 +10519,21 @@ MonoBehaviour:
   menuOptions: {fileID: 7774236100404292257}
   menuOptionsList: []
   turretAttackSpeed: 1
-  turretProjectileSpeed: 18
+  turretProjectileSpeed: 13.2
   turretProjectileScale: 1
   turretDamage: 10
   turretRange: 2.5
   projectileSpawnYOffset: 0
   currentFocus: 0
   enemyList: []
+  combinationList: 
+  combinationAddedItems: []
+  bloodthornObject: {fileID: 5510921274422676455, guid: ad3e80a533edd37498fe75b910622925, type: 3}
+  manaBloomObject: {fileID: 4866552353326664650, guid: a9dc2b2aa43c1fc4094cc3c95342a54c, type: 3}
+  sparkseedObject: {fileID: 3990378498998122904, guid: fbb6b8e9647f7104caf148995c2c1648, type: 3}
+  firstSlot: {fileID: 7252076057375493735}
+  secondSlot: {fileID: 1368142462412841515}
+  giveSlot: {fileID: 0}
   aoeTurret: 0
 --- !u!1 &3736993638025029877
 GameObject:
@@ -10793,7 +10847,6 @@ GameObject:
   - component: {fileID: 4344170806496321440}
   - component: {fileID: 192614779426679630}
   - component: {fileID: 7083056574529206619}
-  - component: {fileID: 2950591040109689184}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -10954,41 +11007,6 @@ MonoBehaviour:
   minIntensity: 0.8
   deltaIntensity: 0.358
   flickerSpeed: 0.346
---- !u!70 &2950591040109689184
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4362095630688467698}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.02112201, y: -0.25119033}
-  m_Size: {x: 0.8396367, y: 0.55142504}
-  m_Direction: 1
 --- !u!1 &7252076057375493735
 GameObject:
   m_ObjectHideFlags: 0
@@ -20749,7 +20767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996739202402763173
 Transform:
   m_ObjectHideFlags: 0
@@ -25704,11 +25722,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4914127098584559384, guid: ad3e80a533edd37498fe75b910622925, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.25
+      value: -1.48
       objectReference: {fileID: 0}
     - target: {fileID: 4914127098584559384, guid: ad3e80a533edd37498fe75b910622925, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0.619
       objectReference: {fileID: 0}
     - target: {fileID: 4914127098584559384, guid: ad3e80a533edd37498fe75b910622925, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25746,6 +25764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bloodthorn
       objectReference: {fileID: 0}
+    - target: {fileID: 5510921274422676455, guid: ad3e80a533edd37498fe75b910622925, type: 3}
+      propertyPath: m_TagString
+      value: Option
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25766,11 +25788,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3289403717078982750, guid: fbb6b8e9647f7104caf148995c2c1648, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 1.48
       objectReference: {fileID: 0}
     - target: {fileID: 3289403717078982750, guid: fbb6b8e9647f7104caf148995c2c1648, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0.619
       objectReference: {fileID: 0}
     - target: {fileID: 3289403717078982750, guid: fbb6b8e9647f7104caf148995c2c1648, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25832,7 +25854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2609778126196351019, guid: a9dc2b2aa43c1fc4094cc3c95342a54c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.204
+      value: 1.31
       objectReference: {fileID: 0}
     - target: {fileID: 2609778126196351019, guid: a9dc2b2aa43c1fc4094cc3c95342a54c, type: 3}
       propertyPath: m_LocalPosition.z

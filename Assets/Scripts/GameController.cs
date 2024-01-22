@@ -43,10 +43,12 @@ public class GameController : MonoBehaviour
     // private bool waveActive = true;
 
     public int healthPoints = 10;
+
     public int energyCount = 0;
+
     public int bloodthorneCount = 0;
     public int manaBloomCount = 0;
-    public int sparkSeedCount = 0;
+    public int sparkseedCount = 0;
 
     [Range(0.0f, 5.0f)]
     public float cameraDistance;
@@ -79,6 +81,13 @@ public class GameController : MonoBehaviour
                 turretMenuOpened = true;
                 return;
             }
+
+            if (rayHit.collider.gameObject.GetComponent<TurretController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<TurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
+            }
         }
 
         if (rayHit.collider.gameObject.CompareTag("Option"))
@@ -86,6 +95,10 @@ public class GameController : MonoBehaviour
             if(rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
             }
             return;           
         }
@@ -148,7 +161,10 @@ public class GameController : MonoBehaviour
 
         if (rayHit.collider.gameObject.CompareTag("Turret"))
         {
-            rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
+            if(rayHit.collider.gameObject.GetComponent<TurretLocationController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
+            }
         }
 
         if (rayHit.collider.gameObject.CompareTag("Option"))

@@ -17,7 +17,10 @@ public class UI_VariableToText : MonoBehaviour
     void Start()
     {
         gameController = GameObject.Find("Game Controller");
+    }
 
+    void Update()
+    {
         switch (importantIndex)
         {
             // ENERGY
@@ -34,14 +37,11 @@ public class UI_VariableToText : MonoBehaviour
                 break;
             // SPARKSEED
             case 3:
-                importantVariable = gameController.GetComponent<GameController>().sparkSeedCount;
+                importantVariable = gameController.GetComponent<GameController>().sparkseedCount;
                 break;
         }
-    }
 
-    void Update()
-    {
-        if(flipTexts) { textComponent.SetText(initialText + importantVariable); }
+        if (!flipTexts) { textComponent.SetText(initialText + importantVariable); }
         else { textComponent.SetText(importantVariable + initialText); }
     }
 }
