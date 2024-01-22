@@ -39,6 +39,18 @@ public class TurretController : MonoBehaviour
         gameController = GameObject.Find("Game Controller");
     }
 
+    public void ActivateButton(int index)
+    {
+        switch (index)
+        {
+            case -1:
+                gameController.GetComponent<GameController>().turretMenuOpened = false;
+                break;
+            case 0:
+                break;
+        }
+    }
+
     void TurretShooting()
     {
         if (turretAttackSpeed <= 0) turretAttackSpeed = 0.01f;
@@ -91,11 +103,25 @@ public class TurretController : MonoBehaviour
         }
     }
 
+    private void ShowRange()
+    {
+        if (currentFocus && !rangeCircle.activeSelf)
+        {
+            rangeCircle.SetActive(true);
+        }
+        else if (!currentFocus && rangeCircle.activeSelf)
+        {
+            rangeCircle.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         rangeCircle.transform.localScale = new Vector2((turretRange * 4), (turretRange * 4));
 
-        gameController.GetComponent<GameController>().MenuOptionsCheck(currentFocus, menuOptions, menuOptionsList);
+        gameController.GetComponent<GameController>().MenuOptionsCheck(ref currentFocus, menuOptions, menuOptionsList);
+
+        ShowRange();
 
         if (!aoeTurret && enemyList.Count > 0) TurretShooting();
     }

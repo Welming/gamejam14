@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     private GameObject playerModel;
     public GameObject turretFloorGlowLight;
     public InputAction clickControls;
-    public TMP_FontAsset font;
 
     [Range(0.0f, 3.0f)]
     public float period = 1;
@@ -31,13 +30,23 @@ public class GameController : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float spriteScalingSpeed = 1.0f;
 
+    [Range(0.5f, 2.0f)]
+    public float textEffectSpeed = 1.0f;
+    [Range(0.0f, 1.0f)]
+    public float textEffectDistance = 1.0f;
+
+    public TMP_FontAsset textFont;
+
     public bool turretMenuOpened = false;
 
     // [SerializeField]
     // private bool waveActive = true;
 
-    [SerializeField]
-    private int healthPoints = 10;
+    public int healthPoints = 10;
+    public int energyCount = 0;
+    public int bloodthorneCount = 0;
+    public int manaBloomCount = 0;
+    public int sparkSeedCount = 0;
 
     [Range(0.0f, 5.0f)]
     public float cameraDistance;
@@ -74,21 +83,23 @@ public class GameController : MonoBehaviour
 
         if (rayHit.collider.gameObject.CompareTag("Option"))
         {
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
+            if(rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
             {
-                rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
-                return;
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
             }
+            return;           
         }
+
+        turretMenuOpened = false;
+        return;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         playerModel = player.transform.Find("Model").gameObject;
     }
 
-    public void MenuOptionsCheck(bool focus, GameObject options, List<GameObject> optionsList)
+    public void MenuOptionsCheck(ref bool focus, GameObject options, List<GameObject> optionsList)
     {
         if (focus && turretMenuOpened)
         {
@@ -120,6 +131,7 @@ public class GameController : MonoBehaviour
                 }
                 options.SetActive(false);
             }
+            focus = false;
         }
     }
 
@@ -141,7 +153,7 @@ public class GameController : MonoBehaviour
 
         if (rayHit.collider.gameObject.CompareTag("Option"))
         {
-            rayHit.collider.gameObject.GetComponent<TurretLocationController>().HoverGlow(hoverGlowInitializedTimer);
+            rayHit.collider.gameObject.GetComponent<OptionHover>().HoverGlow(hoverGlowInitializedTimer);
         }
     }
 
