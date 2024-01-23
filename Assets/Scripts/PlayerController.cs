@@ -11,6 +11,13 @@ public class PlayerController : MonoBehaviour
     [Range(1.0f, 8.0f)]
     public float moveSpeed = 3;
 
+    public float walkSpeed = 3;
+    public float runSpeed = 5;
+
+    public GameObject sunlight;
+    public GameObject outsideLight;
+    public GameObject insideLight;
+
     private Vector2 moveDirection = Vector2.zero;
     private Vector2 moveMemory = Vector2.zero;
     Animator animator;
@@ -64,14 +71,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void RunButton(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            moveSpeed = runSpeed;
+        }
+        if (context.canceled)
+        {
+            moveSpeed = walkSpeed;
+        }
+    }
+
     private void Start()
     {
         animator = gameObject.transform.Find("Model").GetComponent<Animator>().GetComponent<Animator>();
         rigidBody = gameObject.transform.Find("Model").GetComponent<Rigidbody2D>();
     }
 
+    private void AdjustLight()
+    {
+        if (!sunlight.activeSelf)
+        {
+            if (outsideLight.activeSelf)
+            {
+                outsideLight.SetActive(false);
+            }
+            if (!insideLight.activeSelf)
+            {
+                insideLight.SetActive(true);
+            }
+        }
+        if (sunlight.activeSelf)
+        {
+            if (!outsideLight.activeSelf)
+            {
+                outsideLight.SetActive(true);
+            }
+            if (insideLight.activeSelf)
+            {
+                insideLight.SetActive(false);
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
+        AdjustLight();
+
         rigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 }

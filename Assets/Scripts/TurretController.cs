@@ -42,7 +42,16 @@ public class TurretController : MonoBehaviour
     public GameObject secondSlot;
     public GameObject giveSlot;
 
+    public GameObject confirmButton;
+
     public bool aoeTurret = false;
+
+    public GameObject redUpgradedTurret;
+    public GameObject blueUpgradedTurret;
+    public GameObject yellowUpgradedTurret;
+    public GameObject orangeUpgradedTurret;
+    public GameObject purpleUpgradedTurret;
+    public GameObject greenUpgradedTurret;
 
     void Start()
     {
@@ -66,7 +75,16 @@ public class TurretController : MonoBehaviour
         }
     }
 
-
+    private void AdjustPlantsList(GameObject placedItem)
+    {
+        ChangePlantsCount(combinationList[(int)(combinationList.Count - 1)], -1);
+        placedItem.GetComponent<OptionInformation>().buttonIndex = 3 + combinationAddedItems.Count;
+        Debug.Log(3 + combinationAddedItems.Count);
+        placedItem.transform.Find("Name").gameObject.SetActive(false);
+        placedItem.transform.Find("Text").gameObject.SetActive(false);
+        combinationAddedItems.Add(placedItem);
+        placedItem.transform.position = giveSlot.transform.position;
+    }
 
     private void AddPlantsToList(int index)
     {
@@ -76,21 +94,59 @@ public class TurretController : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    ChangePlantsCount(combinationList[(int)(combinationList.Count - 1)], -1);
-                    GameObject placedItem = Instantiate(bloodthornObject);
-                    placedItem.GetComponent<OptionInformation>().buttonIndex = 3 + combinationList.Count;
-                    combinationAddedItems.Add(Instantiate(placedItem, giveSlot.transform));
-                    placedItem.transform.position = giveSlot.transform.position;
-
+                    GameObject placedBloodthorn = Instantiate(bloodthornObject, giveSlot.transform);
+                    AdjustPlantsList(placedBloodthorn);
                     break;
                 case 1:
-                    combinationAddedItems.Add(Instantiate(manaBloomObject, giveSlot.transform));
+                    GameObject placedManaBloom = Instantiate(manaBloomObject, giveSlot.transform);
+                    AdjustPlantsList(placedManaBloom);
                     break;
                 case 2:
-                    combinationAddedItems.Add(Instantiate(sparkseedObject, giveSlot.transform));
+                    GameObject placedSparkseed = Instantiate(sparkseedObject, giveSlot.transform);
+                    AdjustPlantsList(placedSparkseed);
                     break;
             }
         }
+    }
+
+    private void ActivateUgpradedTurret()
+    {
+        int combinationResult = 0;
+        for(int e = 0; e < combinationList.Count;e++)
+        {
+            if (combinationList[e] == 0) { combinationResult += 1; }
+            if (combinationList[e] == 1) { combinationResult += 2; }
+            if (combinationList[e] == 2) { combinationResult += 4; }
+        }
+        switch (combinationResult)
+        {
+            case 2:
+                GameObject newTurret1 = Instantiate(redUpgradedTurret, gameObject.transform.parent);
+                newTurret1.transform.position = gameObject.transform.position;
+                break;
+            case 3:
+                GameObject newTurret2 = Instantiate(purpleUpgradedTurret, gameObject.transform.parent);
+                newTurret2.transform.position = gameObject.transform.position;
+                break;
+            case 4:
+                GameObject newTurret3 = Instantiate(blueUpgradedTurret, gameObject.transform.parent);
+                newTurret3.transform.position = gameObject.transform.position;
+                break;
+            case 5:
+                GameObject newTurret4 = Instantiate(orangeUpgradedTurret, gameObject.transform.parent);
+                newTurret4.transform.position = gameObject.transform.position;
+                break;
+            case 6:
+                GameObject newTurret5 = Instantiate(greenUpgradedTurret, gameObject.transform.parent);
+                newTurret5.transform.position = gameObject.transform.position;
+                break;
+            case 8:
+                GameObject newTurret6 = Instantiate(yellowUpgradedTurret, gameObject.transform.parent);
+                newTurret6.transform.position = gameObject.transform.position;
+                break;
+        }
+        gameController.GetComponent<GameController>().turretMenuOpened = false;
+        Destroy(gameObject);
     }
 
     public void ActivateButton(int index)
@@ -121,20 +177,24 @@ public class TurretController : MonoBehaviour
                 }
                 break;
             case 3:
-                ChangePlantsCount(combinationList[0], -1);
+                ChangePlantsCount(combinationList[0], 1);
                 combinationList.Remove(combinationList[0]);
                 Destroy(combinationAddedItems[0]);
                 combinationAddedItems.Remove(combinationAddedItems[0]);
-                if(combinationAddedItems[0] != null)
-                {
+                if(combinationAddedItems.Count > 0) 
+                { 
                     combinationAddedItems[0].transform.position = firstSlot.transform.position;
+                    combinationAddedItems[0].GetComponent<OptionInformation>().buttonIndex = 3;
                 }
                 break;
             case 4:
-                ChangePlantsCount(combinationList[1], -1);
+                ChangePlantsCount(combinationList[1], 1);
                 combinationList.Remove(combinationList[1]);
                 Destroy(combinationAddedItems[1]);
                 combinationAddedItems.Remove(combinationAddedItems[1]);
+                break;
+            case 5:
+                ActivateUgpradedTurret();
                 break;
         }
     }
@@ -212,14 +272,7 @@ public class TurretController : MonoBehaviour
         {
             for(int i = 0; i < combinationAddedItems.Count;i++)
             {
-                switch (combinationList[0])
-                {
-                    case 0:
-                        gameController.GetComponent<GameController>().bloodthorneCount++;
-                        break;
-
-                }
-                ChangePlantsCount(combinationList[0], -1);
+                ChangePlantsCount(combinationList[0], 1);
                 combinationList.Remove(combinationList[0]);
                 Destroy(combinationAddedItems[0]);
                 combinationAddedItems.Remove(combinationAddedItems[0]);
@@ -230,6 +283,21 @@ public class TurretController : MonoBehaviour
             if (enemyList[i] == null)
             {
                 enemyList.Remove(null);
+            }
+        }
+
+        if(combinationAddedItems.Count == 2)
+        {
+            if(!confirmButton.activeSelf)
+            {
+                confirmButton.SetActive(true);
+            }
+        }
+        else
+        {
+            if (confirmButton.activeSelf)
+            {
+                confirmButton.SetActive(false);
             }
         }
 

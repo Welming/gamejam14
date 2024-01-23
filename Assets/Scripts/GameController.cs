@@ -100,6 +100,10 @@ public class GameController : MonoBehaviour
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
             }
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
             return;           
         }
 
