@@ -10,6 +10,7 @@ public class TurretController : MonoBehaviour
     public GameObject rangeCircle;
     public GameObject gameController;
     public GameObject menuOptions;
+    public GameObject confirmButton;
     public List<GameObject> menuOptionsList;
 
     [Range(0.0f, 10.0f)]
@@ -41,10 +42,6 @@ public class TurretController : MonoBehaviour
     public GameObject firstSlot;
     public GameObject secondSlot;
     public GameObject giveSlot;
-
-    public GameObject confirmButton;
-
-    public bool aoeTurret = false;
 
     public GameObject redUpgradedTurret;
     public GameObject blueUpgradedTurret;
@@ -79,7 +76,6 @@ public class TurretController : MonoBehaviour
     {
         ChangePlantsCount(combinationList[(int)(combinationList.Count - 1)], -1);
         placedItem.GetComponent<OptionInformation>().buttonIndex = 3 + combinationAddedItems.Count;
-        Debug.Log(3 + combinationAddedItems.Count);
         placedItem.transform.Find("Name").gameObject.SetActive(false);
         placedItem.transform.Find("Text").gameObject.SetActive(false);
         combinationAddedItems.Add(placedItem);
@@ -307,6 +303,6 @@ public class TurretController : MonoBehaviour
 
         ShowRange();
 
-        if (!aoeTurret && enemyList.Count > 0) TurretShooting();
+        if (enemyList.Count > 0) TurretShooting();
     }
 }

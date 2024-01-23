@@ -742,6 +742,7 @@ MonoBehaviour:
   rangeCircle: {fileID: 5058811291147145613}
   gameController: {fileID: 0}
   menuOptions: {fileID: 7774236100404292257}
+  confirmButton: {fileID: 463706917496917313}
   menuOptionsList: []
   turretAttackSpeed: 1
   turretProjectileSpeed: 13.2
@@ -759,8 +760,6 @@ MonoBehaviour:
   firstSlot: {fileID: 7252076057375493735}
   secondSlot: {fileID: 1368142462412841515}
   giveSlot: {fileID: 0}
-  confirmButton: {fileID: 0}
-  aoeTurret: 0
   redUpgradedTurret: {fileID: 0}
   blueUpgradedTurret: {fileID: 0}
   yellowUpgradedTurret: {fileID: 0}

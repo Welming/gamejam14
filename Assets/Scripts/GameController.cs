@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     public int healthPoints = 10;
 
-    public int energyCount = 0;
+    public int emberCount = 0;
 
     public int bloodthorneCount = 0;
     public int manaBloomCount = 0;

@@ -50,7 +50,11 @@ public class TurretLocationController : MonoBehaviour
                 gameController.GetComponent<GameController>().turretMenuOpened = false;
                 break;
             case 0:
-                CreateTurret();
+                if(gameController.GetComponent<GameController>().emberCount >= 100)
+                {
+                    gameController.GetComponent<GameController>().emberCount -= 100;
+                    CreateTurret();
+                }
                 break;
         }
     }

@@ -25,7 +25,7 @@ public class UI_VariableToText : MonoBehaviour
         {
             // ENERGY
             case 0:
-                importantVariable = gameController.GetComponent<GameController>().energyCount;
+                importantVariable = gameController.GetComponent<GameController>().emberCount;
                 break;
             // BLOODTHORNE
             case 1:
