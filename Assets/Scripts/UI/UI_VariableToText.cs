@@ -39,6 +39,14 @@ public class UI_VariableToText : MonoBehaviour
             case 3:
                 importantVariable = gameController.GetComponent<GameController>().sparkseedCount;
                 break;
+            // WAVE TIMER
+            case 4:
+                importantVariable = (int)Mathf.Floor(gameController.GetComponent<GameController>().waveTimer);
+                break;
+            // ENEMY SCALING
+            case 5:
+                importantVariable = (int)Mathf.Ceil(gameController.GetComponent<GameController>().enemyScaling * 100);
+                break;
         }
 
         if (!flipTexts) { textComponent.SetText(initialText + importantVariable); }

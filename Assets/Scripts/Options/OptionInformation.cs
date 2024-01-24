@@ -10,6 +10,7 @@ public class OptionInformation : MonoBehaviour
     Vector3 startPosition;
 
     public int buttonIndex;
+    public bool flipAnimation;
 
     void Start()
     {
@@ -30,7 +31,14 @@ public class OptionInformation : MonoBehaviour
     {
         if (gameObject.GetComponent<RectTransform>() != null)
         {
-            gameObject.GetComponent<RectTransform>().localPosition = new Vector3((Mathf.SmoothStep(-gameController.GetComponent<GameController>().textEffectDistance + 0.004f, gameController.GetComponent<GameController>().textEffectDistance, Mathf.PingPong(Time.time / gameController.GetComponent<GameController>().textEffectSpeed, 1)) + startPosition.x), startPosition.y, 0.0f);
+            if(flipAnimation)
+            {
+                gameObject.GetComponent<RectTransform>().localPosition = new Vector3((Mathf.SmoothStep(-gameController.GetComponent<GameController>().textEffectDistance + 0.004f, gameController.GetComponent<GameController>().textEffectDistance, Mathf.PingPong(Time.time / gameController.GetComponent<GameController>().textEffectSpeed * -1, 1)) + startPosition.x), startPosition.y, 0.0f);
+            }
+            else
+            {
+                gameObject.GetComponent<RectTransform>().localPosition = new Vector3((Mathf.SmoothStep(-gameController.GetComponent<GameController>().textEffectDistance + 0.004f, gameController.GetComponent<GameController>().textEffectDistance, Mathf.PingPong(Time.time / gameController.GetComponent<GameController>().textEffectSpeed, 1)) + startPosition.x), startPosition.y, 0.0f);
+            }
         }
     }
 }

@@ -14,21 +14,28 @@ public class GameController : MonoBehaviour
     public InputAction clickControls;
 
     [Range(0.0f, 3.0f)]
-    public float period = 1;
+    public float spawnPeriod = 1;
     [Range(0.0f, 3.0f)]
-    public float periodModifier = 1;
+    public float spawnPeriodModifier = 1;
+
     [Range(0.0f, 10.0f)]
     public float spawnersScalingSpeed = 0.0f;
     [Range(5, 100)]
     public int spawnersMaximumScaling = 10;
+    [Range(0.0f, 10.0f)]
+    public float enemyScaling = 1.0f;
+
     [Range(0, 10)]
     public int cycleLength;
     private float cycleTimer;
 
     [Range(0.0f, 10.0f)]
     public float spriteScaling = 1.0f;
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 2.0f)]
     public float spriteScalingSpeed = 1.0f;
+
+    [Range(0.0f, 2.0f)]
+    public float lightScalingSpeed = 1.0f;
 
     [Range(0.5f, 2.0f)]
     public float textEffectSpeed = 1.0f;
@@ -39,9 +46,6 @@ public class GameController : MonoBehaviour
 
     public bool turretMenuOpened = false;
 
-    // [SerializeField]
-    // private bool waveActive = true;
-
     public int healthPoints = 10;
 
     public int emberCount = 0;
@@ -49,6 +53,11 @@ public class GameController : MonoBehaviour
     public int bloodthorneCount = 0;
     public int manaBloomCount = 0;
     public int sparkseedCount = 0;
+
+    public float waveTimer;
+    public float waveLength = 60;
+    public bool waveActive = true;
+    public int waveCount;
 
     [Range(0.0f, 5.0f)]
     public float cameraDistance;
@@ -62,6 +71,22 @@ public class GameController : MonoBehaviour
     public float hoverGlowInitializedTimer;
 
     private Vector3 cameraVelocity = Vector3.zero;
+
+    public void WavesCycling()
+    {
+        if (waveTimer > 0)
+        {
+            if (waveActive)
+            {
+                waveTimer -= Time.deltaTime;
+                enemyScaling += spawnersScalingSpeed * Time.deltaTime;
+            }
+        }
+        if (waveTimer <= 0)
+        {
+            waveActive = false;
+        }
+    }
 
     public void OnClick(InputAction.CallbackContext context)
     {
@@ -109,11 +134,6 @@ public class GameController : MonoBehaviour
 
         turretMenuOpened = false;
         return;
-    }
-
-    void Start()
-    {
-        playerModel = player.transform.Find("Model").gameObject;
     }
 
     public void MenuOptionsCheck(ref bool focus, GameObject options, List<GameObject> optionsList)
@@ -177,16 +197,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void WavesCycling()
+    void Start()
     {
-        if(cycleTimer <= (cycleLength * 60))
-        {
-            cycleTimer += Time.deltaTime;
-        }
-        else
-        {
-            // waveActive = false;
-        }
+        playerModel = player.transform.Find("Model").gameObject;
     }
 
     void FixedUpdate()

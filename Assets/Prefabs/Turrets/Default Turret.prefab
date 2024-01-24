@@ -161,6 +161,7 @@ MonoBehaviour:
   gameController: {fileID: 0}
   textComponent: {fileID: 0}
   buttonIndex: 5
+  flipAnimation: 0
 --- !u!1 &814524823441995736
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   gameController: {fileID: 0}
   textComponent: {fileID: 6669456295171639192}
   buttonIndex: -1
+  flipAnimation: 1
 --- !u!1 &1175185417128682460
 GameObject:
   m_ObjectHideFlags: 0
@@ -10728,6 +10730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f3a912c21ff1748aa2eedca276ff8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
 --- !u!1001 &1703164700782878047
 PrefabInstance:
   m_ObjectHideFlags: 0

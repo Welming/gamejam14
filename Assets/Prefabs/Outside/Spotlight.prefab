@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8466538152579809948}
   - component: {fileID: 6241613381410798279}
+  - component: {fileID: 8511049353328359747}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Intensity: 0.44
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000ab7a09ca7b515b50cfc44d6c
+  m_ApplyToSortingLayers: 00000000ab7a09cacfc44d6c
   m_LightCookieSprite: {fileID: 21300000, guid: 119f93d0bcbf1e743bf5fcf237507d39, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -82,3 +83,17 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &8511049353328359747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8419172191715070675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d67b527578abd5a4192e4113d6673f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  startingIntensity: 0

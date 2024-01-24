@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpriteScaling : MonoBehaviour
 {
-    GameObject gameController;
+    public GameObject gameController;
     float scalingMultiplier = 1.0f;
 
     private void Start()
@@ -18,7 +18,7 @@ public class SpriteScaling : MonoBehaviour
         scalingMultiplier = 1.0f;
     }
 
-        private void Update()
+    private void Update()
     {
         if(gameObject.transform.localScale.x < gameController.GetComponent<GameController>().spriteScaling)
         {
