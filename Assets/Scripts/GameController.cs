@@ -59,6 +59,8 @@ public class GameController : MonoBehaviour
     public bool waveActive = true;
     public int waveCount;
 
+    public List<int> turretUpgradeCosts;
+
     [Range(0.0f, 5.0f)]
     public float cameraDistance;
     [Range(0.0f, 1.0f)]

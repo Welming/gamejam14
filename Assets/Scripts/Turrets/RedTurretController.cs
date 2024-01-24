@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,100 +12,78 @@ public class RedTurretController : MonoBehaviour
     public GameObject gameController;
     public GameObject menuOptions;
     public List<GameObject> menuOptionsList;
+    public GameObject upgradesMenu;
+    public GameObject maxLevelMenu;
+    public GameObject acceptButton;
 
     [Range(0.0f, 10.0f)]
     public float turretAttackSpeed;
+    public List<float> attackSpeedLevels;
+
     [Range(0.0f, 100.0f)]
     public float turretProjectileSpeed;
+
     [Range(0.01f, 5.0f)]
     public float turretProjectileScale = 1.0f;
+
     [Range(0, 100)]
     public int turretDamage;
+    public List<int> damageLevels;
+
     [Range(0.0f, 10.0f)]
     public float turretRange;
+    public List<float> rangeLevels;
 
     [Range(0.0f, 10.0f)]
     public float projectileSpawnYOffset;
+
+    public int turretLevel;
 
     public bool currentFocus;
 
     private float attackTimer;
     public List<GameObject> enemyList;
 
-    public List<int> combinationList;
-    public List<GameObject> combinationAddedItems;
-
-    public GameObject bloodthornObject;
-    public GameObject manaBloomObject;
-    public GameObject sparkseedObject;
-
-    public GameObject firstSlot;
-    public GameObject secondSlot;
-    public GameObject giveSlot;
-
-    public GameObject confirmButton;
-
-    public bool aoeTurret = false;
-
     void Start()
     {
         InvokeRepeating("FindTarget", 0.0f, 0.1f);
         gameController = GameObject.Find("Game Controller");
+        turretAttackSpeed = attackSpeedLevels[0];
+        turretDamage = damageLevels[0];
+        turretRange = rangeLevels[0];
     }
 
-    private void ChangePlantsCount(int index, int amount)
+    public void UpgradeTurret(int index)
     {
-        switch (index)
+
+        gameController.GetComponent<GameController>().emberCount -= gameController.GetComponent<GameController>().turretUpgradeCosts[turretLevel];
+        turretLevel++;
+        turretAttackSpeed = attackSpeedLevels[index];
+        turretDamage = damageLevels[index];
+        turretRange = rangeLevels[index];
+
+        if(turretLevel == gameController.GetComponent<GameController>().turretUpgradeCosts.Count)
         {
-            case 0:
-                gameController.GetComponent<GameController>().bloodthorneCount += amount;
-                break;
-            case 1:
-                gameController.GetComponent<GameController>().manaBloomCount += amount;
-                break;
-            case 2:
-                gameController.GetComponent<GameController>().sparkseedCount += amount;
-                break;
+            upgradesMenu.SetActive(false);
+            maxLevelMenu.SetActive(true);
         }
-    }
-
-    private void AdjustPlantsList(GameObject placedItem)
-    {
-        ChangePlantsCount(combinationList[(int)(combinationList.Count - 1)], -1);
-        placedItem.GetComponent<OptionInformation>().buttonIndex = 3 + combinationAddedItems.Count;
-        Debug.Log(3 + combinationAddedItems.Count);
-        placedItem.transform.Find("Name").gameObject.SetActive(false);
-        placedItem.transform.Find("Text").gameObject.SetActive(false);
-        combinationAddedItems.Add(placedItem);
-        placedItem.transform.position = giveSlot.transform.position;
-    }
-
-    private void AddPlantsToList(int index)
-    {
-        if (combinationList.Count < 2)
-        {
-            combinationList.Add(index);
-            switch (index)
-            {
-                case 0:
-                    GameObject placedBloodthorn = Instantiate(bloodthornObject, giveSlot.transform);
-                    AdjustPlantsList(placedBloodthorn);
-                    break;
-                case 1:
-                    GameObject placedManaBloom = Instantiate(manaBloomObject, giveSlot.transform);
-                    AdjustPlantsList(placedManaBloom);
-                    break;
-                case 2:
-                    GameObject placedSparkseed = Instantiate(sparkseedObject, giveSlot.transform);
-                    AdjustPlantsList(placedSparkseed);
-                    break;
-            }
-        }
+        
     }
 
     public void ActivateButton(int index)
     {
-
+        switch (index)
+        {
+            case -1:
+                gameController.GetComponent<GameController>().turretMenuOpened = false;
+                break;
+            case 0:
+                if (gameController.GetComponent<GameController>().emberCount >= gameController.GetComponent<GameController>().turretUpgradeCosts[turretLevel])
+                {
+                    UpgradeTurret(turretLevel);
+                }
+                break;
+        }
     }
 
     void TurretShooting()
@@ -165,6 +144,16 @@ public class RedTurretController : MonoBehaviour
 
     private void ShowRange()
     {
+        if(acceptButton.GetComponent<OptionHover>().hoverGlowTimer > 0 && turretLevel != gameController.GetComponent<GameController>().turretUpgradeCosts.Count)
+        {
+            turretRange = rangeLevels[turretLevel+1];
+            
+        }
+        else
+        {
+            turretRange = rangeLevels[turretLevel];
+        }
+
         if (currentFocus && !rangeCircle.activeSelf)
         {
             rangeCircle.SetActive(true);
@@ -177,36 +166,12 @@ public class RedTurretController : MonoBehaviour
 
     private void Update()
     {
-        if (!currentFocus && combinationAddedItems.Count > 0)
-        {
-            for (int i = 0; i < combinationAddedItems.Count; i++)
-            {
-                ChangePlantsCount(combinationList[0], 1);
-                combinationList.Remove(combinationList[0]);
-                Destroy(combinationAddedItems[0]);
-                combinationAddedItems.Remove(combinationAddedItems[0]);
-            }
-        }
+        
         for (int i = 0; i < enemyList.Count; i++)
         {
             if (enemyList[i] == null)
             {
                 enemyList.Remove(null);
-            }
-        }
-
-        if (combinationAddedItems.Count == 2)
-        {
-            if (!confirmButton.activeSelf)
-            {
-                confirmButton.SetActive(true);
-            }
-        }
-        else
-        {
-            if (confirmButton.activeSelf)
-            {
-                confirmButton.SetActive(false);
             }
         }
 
@@ -216,6 +181,6 @@ public class RedTurretController : MonoBehaviour
 
         ShowRange();
 
-        if (!aoeTurret && enemyList.Count > 0) TurretShooting();
+        if (enemyList.Count > 0) TurretShooting();
     }
 }

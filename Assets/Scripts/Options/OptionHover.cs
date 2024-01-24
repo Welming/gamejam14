@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OptionHover : MonoBehaviour
 {
-    [SerializeField]
-    private float hoverGlowTimer;
+    
+    public float hoverGlowTimer;
 
     public float colorDimValue = 0.8f;
 

@@ -107,6 +107,8 @@ public class TurretController : MonoBehaviour
 
     private void ActivateUgpradedTurret()
     {
+
+
         int combinationResult = 0;
         for(int e = 0; e < combinationList.Count;e++)
         {
