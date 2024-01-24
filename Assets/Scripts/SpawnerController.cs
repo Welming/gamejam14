@@ -59,6 +59,8 @@ public class SpawnerController : MonoBehaviour
 
     void Update()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         if (activated && gameController.GetComponent<GameController>().waveActive) DispenseWaves();
     }
 }

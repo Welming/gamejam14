@@ -24,7 +24,13 @@ public class UI_TimerButton : MonoBehaviour
     
     void Update()
     {
-        if(gameController.GetComponent<GameController>().waveTimer <= 0)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) 
+        {
+            buttonObject.GetComponent<Button>().interactable = false;
+            return; 
+        }
+
+        if (gameController.GetComponent<GameController>().waveTimer <= 0)
         {
             buttonObject.GetComponent<Button>().interactable = true;
             buttonObject.GetComponent<Image>().color = new Color( 0.3333f, 0.7176f, 0.3333f, 1.0f );

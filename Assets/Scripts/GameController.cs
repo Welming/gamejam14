@@ -72,6 +72,8 @@ public class GameController : MonoBehaviour
 
     private Vector3 cameraVelocity = Vector3.zero;
 
+    public bool pauseMenuOpened;
+
     public void WavesCycling()
     {
         if (waveTimer > 0)
@@ -90,6 +92,8 @@ public class GameController : MonoBehaviour
 
     public void OnClick(InputAction.CallbackContext context)
     {
+        if(pauseMenuOpened) { return; }
+
         if (!context.started) return;
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.GetComponent<Camera>().ScreenPointToRay(Mouse.current.position.ReadValue()));
         if (!rayHit.collider) 
@@ -204,6 +208,8 @@ public class GameController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (pauseMenuOpened) { return; }
+
         // Waves
         WavesCycling();
 
