@@ -44,6 +44,7 @@ public class UI_TimerButton : MonoBehaviour
                 buttonTextObject.SetActive(true);
             }
         }
+
         if(gameController.GetComponent<GameController>().waveTimer > 0)
         {
             buttonObject.GetComponent<Button>().interactable = false;

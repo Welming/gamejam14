@@ -844,7 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretModel: {fileID: 4362095630688467698}
-  projectileType: {fileID: 0}
+  projectileType: {fileID: 4738212287637575486, guid: 7254b7c2c1285a44484b977a8cc5b942, type: 3}
   rangeCircle: {fileID: 5058811291147145613}
   gameController: {fileID: 0}
   menuOptions: {fileID: 7774236100404292257}
@@ -1444,7 +1444,7 @@ Animator:
   m_GameObject: {fileID: 4362095630688467698}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b1031a9747cb41a47b8af8367a6d03d4, type: 2}
+  m_Controller: {fileID: 9100000, guid: d82bb12efe966354c8d70fd586e7efc6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

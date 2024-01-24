@@ -99,10 +99,10 @@ public class RedTurretController : MonoBehaviour
             attackTimer = 0;
             turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
             GameObject newProjectile = Instantiate(projectileType, gameObject.transform);
-            newProjectile.GetComponent<ProjectileController>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + projectileSpawnYOffset, gameObject.transform.position.z);
-            newProjectile.GetComponent<ProjectileController>().projectileSpeed = turretProjectileSpeed;
-            newProjectile.GetComponent<ProjectileController>().projectileDamage = turretDamage;
-            newProjectile.GetComponent<ProjectileController>().transform.localScale *= turretProjectileScale;
+            newProjectile.GetComponent<RedProjectile>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + projectileSpawnYOffset, gameObject.transform.position.z);
+            newProjectile.GetComponent<RedProjectile>().projectileSpeed = turretProjectileSpeed;
+            newProjectile.GetComponent<RedProjectile>().projectileDamage = turretDamage;
+            newProjectile.GetComponent<RedProjectile>().transform.localScale *= turretProjectileScale;
             for (int e = 0; e < enemyList.Count; e++)
             {
                 if (enemyList[e] == null)
@@ -112,8 +112,8 @@ public class RedTurretController : MonoBehaviour
             }
             if (enemyList[0] != null)
             {
-                newProjectile.GetComponent<ProjectileController>().targetObject = enemyList[0];
-                newProjectile.GetComponent<ProjectileController>().initiated = true;
+                newProjectile.GetComponent<RedProjectile>().targetObject = enemyList[0];
+                newProjectile.GetComponent<RedProjectile>().initiated = true;
             }
         }
     }
