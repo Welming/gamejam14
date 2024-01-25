@@ -124,14 +124,11 @@ public class PurpleTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<PurpleProjectile>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<PurpleProjectile>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<PurpleProjectile>().targetObject = enemyList[0];
+                newProjectile.GetComponent<PurpleProjectile>().initiated = true;
+                return;
             }
         }
     }

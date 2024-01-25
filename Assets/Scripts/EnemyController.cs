@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject gameController;
+    public GameObject playerObject;
 
     [SerializeField]
     private float initialMovementSpeed;
@@ -17,7 +18,7 @@ public class EnemyController : MonoBehaviour
     [Range(0, 100)]
     public int enemyHealthPoints = 10;
     [SerializeField]
-    private int initialHealthPoints;
+    public int initialHealthPoints;
     public GameObject healthBar;
 
     public List<GameObject> directionsList;
@@ -101,11 +102,11 @@ public class EnemyController : MonoBehaviour
     private void PoisonEnemy()
     {
         if(poisonTicks > 0 && poisonTimer <= 0) 
-        { 
+        {
             poisonTicks--;
             enemyHealthPoints -= poisonDamage;
             poisonTimer = poisonTimeLength;
-            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;  
             enemyModel.GetComponent<SpriteRenderer>().color = new Color(enemyModel.GetComponent<SpriteRenderer>().color.r, enemyModel.GetComponent<SpriteRenderer>().color.g, enemyModel.GetComponent<SpriteRenderer>().color.b, 1.0f);
         }
         if (poisonTimer > 0)
@@ -118,10 +119,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
+
     private void Awake()
     {
         gameController = GameObject.Find("Game Controller");
-        initialHealthPoints = enemyHealthPoints;
         initialMovementSpeed = enemyMovementSpeed;
         initialColor = enemyModel.GetComponent<SpriteRenderer>().color;
         animator = gameObject.transform.Find("Model").GetComponent<Animator>().GetComponent<Animator>();

@@ -110,13 +110,10 @@ public class OrangeTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<OrangeProjectile>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<OrangeProjectile>().initiated = true;
+                return;
             }
         }
     }

@@ -117,14 +117,11 @@ public class YellowTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<ProjectileController>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<ProjectileController>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<ProjectileController>().targetObject = enemyList[0];
+                newProjectile.GetComponent<ProjectileController>().initiated = true;
+                return;
             }
         }
     }

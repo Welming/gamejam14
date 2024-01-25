@@ -132,14 +132,11 @@ public class BlueTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<BlueProjectile>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<BlueProjectile>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<BlueProjectile>().targetObject = enemyList[0];
+                newProjectile.GetComponent<BlueProjectile>().initiated = true;
+                return;
             }
         }
     }

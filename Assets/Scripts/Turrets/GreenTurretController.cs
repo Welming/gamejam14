@@ -127,14 +127,11 @@ public class GreenTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<GreenTurretProjectile>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<GreenTurretProjectile>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<GreenTurretProjectile>().targetObject = enemyList[0];
+                newProjectile.GetComponent<GreenTurretProjectile>().initiated = true;
+                return;
             }
         }
     }

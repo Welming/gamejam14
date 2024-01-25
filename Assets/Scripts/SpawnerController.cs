@@ -47,6 +47,7 @@ public class SpawnerController : MonoBehaviour
             enemy.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
             enemy.GetComponent<EnemyController>().enemyMovementSpeed = (enemySpeedModifier * gameController.GetComponent<GameController>().enemyScaling * enemy.GetComponent<EnemyController>().enemyMovementSpeed);
             enemy.GetComponent<EnemyController>().enemyHealthPoints = (int)Mathf.Ceil(enemyHealthModifier * gameController.GetComponent<GameController>().enemyScaling * enemy.GetComponent<EnemyController>().enemyHealthPoints);
+            enemy.GetComponent<EnemyController>().initialHealthPoints = enemy.GetComponent<EnemyController>().enemyHealthPoints;
             enemy.GetComponent<EnemyController>().directionsList = directionsList;
             enemy.GetComponent<EnemyController>().initiated = true;
             enemyQuantityLeft--;

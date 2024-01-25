@@ -310,7 +310,7 @@ public class TurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            if(enemyList[0] != null)
+            if(enemyList.Count > 0)
             {
                 newProjectile.GetComponent<ProjectileController>().targetObject = enemyList[0];
                 newProjectile.GetComponent<ProjectileController>().initiated = true;

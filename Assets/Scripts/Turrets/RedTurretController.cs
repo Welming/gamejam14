@@ -124,14 +124,11 @@ public class RedTurretController : MonoBehaviour
                     enemyList.Remove(enemyList[e]);
                 }
             }
-            for (int e = 0; e < enemyList.Count; e++)
+            if (enemyList.Count > 0)
             {
-                if (enemyList[e] != null)
-                {
-                    newProjectile.GetComponent<RedProjectile>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<RedProjectile>().initiated = true;
-                    return;
-                }
+                newProjectile.GetComponent<RedProjectile>().targetObject = enemyList[0];
+                newProjectile.GetComponent<RedProjectile>().initiated = true;
+                return;
             }
         }
     }
