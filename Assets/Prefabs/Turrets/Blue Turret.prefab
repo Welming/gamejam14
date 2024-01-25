@@ -3104,6 +3104,7 @@ GameObject:
   - component: {fileID: 4344170806496321440}
   - component: {fileID: 192614779426679630}
   - component: {fileID: 7083056574529206619}
+  - component: {fileID: 7531056977193482214}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -3264,6 +3265,20 @@ MonoBehaviour:
   minIntensity: 0.8
   deltaIntensity: 0.358
   flickerSpeed: 0.346
+--- !u!114 &7531056977193482214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362095630688467698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99091b2d81d3ba7418743dd61b3cf920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4781779972468212206
 GameObject:
   m_ObjectHideFlags: 0

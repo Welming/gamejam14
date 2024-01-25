@@ -71,8 +71,8 @@ public class GameController : MonoBehaviour
     public float cameraCloseEnoughDistance;
     [Range(0.0f, 2.0f)]
     public float hoverGlowInitializedTimer;
-    [Range(0.0f, 2.0f)]
-    public float menuLightDimIntensity;
+    [Range(0.0f, 1.0f)]
+    public float menuLightDimIntensity = 0.4f;
 
     private Vector3 cameraVelocity = Vector3.zero;
 
