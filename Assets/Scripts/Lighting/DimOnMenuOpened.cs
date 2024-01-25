@@ -22,12 +22,12 @@ public class DimOnMenuOpened : MonoBehaviour
         }
         if (!gameController.GetComponent<GameController>().turretMenuOpened && gameObject.GetComponent<Light2D>().color.r <= 1)
         {
-            if(gameObject.GetComponent<Light2D>().color.a + (1 + Time.deltaTime) > 1) 
+            if(gameObject.GetComponent<Light2D>().color.a * (1 + Time.deltaTime) > 1) 
             {
                 gameObject.GetComponent<Light2D>().color = initialColor;
                 return;
             }
-            gameObject.GetComponent<Light2D>().color *= (1 + Time.deltaTime);
+            gameObject.GetComponent<Light2D>().color *= (1 + (Time.deltaTime * 2));
         }
     }
 }
