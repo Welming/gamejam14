@@ -12,11 +12,16 @@ public class RedProjectile : MonoBehaviour
 
     public float projectileSpeed;
     public int projectileDamage;
-    public int aoeRange;
+    public float aoeRange;
     public GameObject aoeObject;
     public Vector3 startPosition;
 
     public float distanceBeforeImpact = 0.05f;
+
+    private void Start()
+    {
+        gameObject.transform.position = startPosition;
+    }
 
     private void TrackEnemy()
     {
@@ -28,6 +33,7 @@ public class RedProjectile : MonoBehaviour
             AOEDamage();
             GameObject newAOE = Instantiate(aoeObject);
             newAOE.transform.position = targetObject.transform.position;
+            newAOE.transform.localScale *= aoeRange * 2;
             Destroy(gameObject);
         }
     }
@@ -42,8 +48,7 @@ public class RedProjectile : MonoBehaviour
             if (Vector2.Distance(gameObject.transform.position, tempArray[e].transform.position) <= aoeRange)
             {
                 tempArray[e].GetComponent<EnemyController>().enemyHealthPoints -= projectileDamage;
-            }
-            
+            }          
         }
     }
 

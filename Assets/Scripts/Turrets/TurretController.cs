@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class TurretController : MonoBehaviour
@@ -50,10 +51,25 @@ public class TurretController : MonoBehaviour
     public GameObject purpleUpgradedTurret;
     public GameObject greenUpgradedTurret;
 
+    public GameObject defaultTurretInformation;
+
+    public GameObject redUpgradedTurretInformation;
+    public GameObject blueUpgradedTurretInformation;
+    public GameObject yellowUpgradedTurretInformation;
+    public GameObject orangeUpgradedTurretInformation;
+    public GameObject purpleUpgradedTurretInformation;
+    public GameObject greenUpgradedTurretInformation;
+
+    public List<GameObject> listOfTurretInformations;
+
     void Start()
     {
         InvokeRepeating("FindTarget", 0.0f, 0.1f);
         gameController = GameObject.Find("Game Controller");
+
+        defaultTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + turretAttackSpeed.ToString("#0.0");
+        defaultTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + turretDamage.ToString("#0.0");
+        defaultTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + turretRange.ToString("#0.0");
     }
 
     private void ChangePlantsCount(int index, int amount)
@@ -103,6 +119,10 @@ public class TurretController : MonoBehaviour
                     break;
             }
         }
+        if(combinationList.Count == 2)
+        {
+            ShowInformationUgpradedTurret();
+        }
     }
 
     private void ActivateUgpradedTurret()
@@ -145,6 +165,56 @@ public class TurretController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void HideInformationUgpradedTurret()
+    {
+        for(int e = 0; e < listOfTurretInformations.Count;e++)
+        {
+            if (listOfTurretInformations[e].activeSelf)
+            {
+                listOfTurretInformations[e].SetActive(false);
+            }
+        }
+    }
+
+    private void ShowInformationUgpradedTurret()
+    {
+        int combinationResult = 0;
+        for (int e = 0; e < combinationList.Count; e++)
+        {
+            if (combinationList[e] == 0) { combinationResult += 1; }
+            if (combinationList[e] == 1) { combinationResult += 2; }
+            if (combinationList[e] == 2) { combinationResult += 4; }
+        }
+        switch (combinationResult)
+        {
+            case 2:
+                redUpgradedTurretInformation.SetActive(true);
+                redUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + redUpgradedTurret.GetComponent<RedTurretController>().turretAttackSpeed.ToString("#0.0");
+                redUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + redUpgradedTurret.GetComponent<RedTurretController>().turretDamage.ToString("#0.0");
+                redUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + redUpgradedTurret.GetComponent<RedTurretController>().turretRange.ToString("#0.0");
+                redUpgradedTurretInformation.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + redUpgradedTurret.GetComponent<RedTurretController>().turretAoeRange.ToString("#0.0");
+                break;
+            case 3:
+                purpleUpgradedTurretInformation.SetActive(true);
+                break;
+            case 4:
+                blueUpgradedTurretInformation.SetActive(true);
+                break;
+            case 5:
+                orangeUpgradedTurretInformation.SetActive(true);
+                break;
+            case 6:
+                greenUpgradedTurretInformation.SetActive(true);
+                break;
+            case 8:
+                yellowUpgradedTurretInformation.SetActive(true);
+                yellowUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretAttackSpeed.ToString("#0.0");
+                yellowUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretDamage.ToString("#0.0");
+                yellowUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretRange.ToString("#0.0");
+                break;
+        }
+    }
+
     public void ActivateButton(int index)
     {
         if(combinationList.Count == 0) { giveSlot = firstSlot; }
@@ -182,12 +252,14 @@ public class TurretController : MonoBehaviour
                     combinationAddedItems[0].transform.position = firstSlot.transform.position;
                     combinationAddedItems[0].GetComponent<OptionInformation>().buttonIndex = 3;
                 }
+                HideInformationUgpradedTurret();
                 break;
             case 4:
                 ChangePlantsCount(combinationList[1], 1);
                 combinationList.Remove(combinationList[1]);
                 Destroy(combinationAddedItems[1]);
                 combinationAddedItems.Remove(combinationAddedItems[1]);
+                HideInformationUgpradedTurret();
                 break;
             case 5:
                 ActivateUgpradedTurret();
@@ -208,7 +280,7 @@ public class TurretController : MonoBehaviour
             attackTimer = 0;
             turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
             GameObject newProjectile = Instantiate(projectileType, gameObject.transform);
-            newProjectile.GetComponent<ProjectileController>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + projectileSpawnYOffset, gameObject.transform.position.z);
+            newProjectile.GetComponent<ProjectileController>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - projectileSpawnYOffset, gameObject.transform.position.z);
             newProjectile.GetComponent<ProjectileController>().projectileSpeed = turretProjectileSpeed;
             newProjectile.GetComponent<ProjectileController>().projectileDamage = turretDamage;
             newProjectile.GetComponent<ProjectileController>().transform.localScale *= turretProjectileScale;
@@ -268,6 +340,7 @@ public class TurretController : MonoBehaviour
         {
             for(int i = 0; i < combinationAddedItems.Count;i++)
             {
+                HideInformationUgpradedTurret();
                 ChangePlantsCount(combinationList[0], 1);
                 combinationList.Remove(combinationList[0]);
                 Destroy(combinationAddedItems[0]);

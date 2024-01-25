@@ -16,6 +16,11 @@ public class ProjectileController : MonoBehaviour
 
     public float distanceBeforeImpact = 0.05f;
 
+    private void Start()
+    {
+        gameObject.transform.position = startPosition;
+    }
+
     private void TrackEnemy()
     {
         projectileSpeed += projectileSpeed * Time.deltaTime;

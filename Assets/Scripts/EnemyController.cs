@@ -6,10 +6,16 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject gameController;
 
+    [SerializeField]
+    private float initialMovementSpeed;
     [Range(0.0f, 10.0f)]
     public float enemyMovementSpeed = 1;
+
     [Range(0, 100)]
     public int enemyHealthPoints = 10;
+    [SerializeField]
+    private int initialHealthPoints;
+    public GameObject healthBar;
 
 
     public List<GameObject> directionsList;
@@ -19,12 +25,15 @@ public class EnemyController : MonoBehaviour
     // PUBLIC FOR TESTING
     public bool initiated;
 
+    float slowTimer;
+    float slowAmount;
+
     private int pathIndex;
     private int directionMemory;
 
     private void MoveOnPath()
     {
-        float step = enemyMovementSpeed * Time.deltaTime;
+        float step = enemyMovementSpeed * Time.deltaTime * gameController.GetComponent<GameController>().enemyScaling;
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, directionsList[pathIndex].transform.position, step);
 
         if (gameObject.transform.position.x > directionsList[pathIndex].transform.position.x) 
@@ -66,16 +75,35 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void SlowEnemy()
+    {
+        if(slowTimer > 0)
+        {
+            slowTimer -= Time.deltaTime;
+
+        }
+        else
+        {
+
+        }
+    }
+
+
     private void Start()
     {
         gameController = GameObject.Find("Game Controller");
+        initialHealthPoints = enemyHealthPoints;
+        initialMovementSpeed = enemyMovementSpeed;
         animator = gameObject.transform.Find("Model").GetComponent<Animator>().GetComponent<Animator>();
         animator.SetBool("Walk", true);
     }
 
-    // Update is called once per frame
     private void Update()
     {
+        SlowEnemy();
+
+        float healthBarScale = (float)enemyHealthPoints / (float)initialHealthPoints;
+        healthBar.transform.localScale = new Vector3(healthBarScale, 1.0f, 1.0f);
         if (initiated) MoveOnPath();
         if(enemyHealthPoints <= 0)
         {

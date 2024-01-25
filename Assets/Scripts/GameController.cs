@@ -119,14 +119,38 @@ public class GameController : MonoBehaviour
                 turretMenuOpened = true;
                 return;
             }
+
+            if (rayHit.collider.gameObject.GetComponent<RedTurretController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<RedTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
+            }
+            if (rayHit.collider.gameObject.GetComponent<YellowTurretController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<YellowTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
+            }
         }
 
         if (rayHit.collider.gameObject.CompareTag("Option"))
         {
-            if(rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
             }
+
             if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);

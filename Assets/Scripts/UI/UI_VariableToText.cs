@@ -45,7 +45,7 @@ public class UI_VariableToText : MonoBehaviour
                 break;
             // ENEMY SCALING
             case 5:
-                importantVariable = (int)Mathf.Ceil(gameController.GetComponent<GameController>().enemyScaling * 100);
+                importantVariable = (int)Mathf.Floor(gameController.GetComponent<GameController>().enemyScaling * 100);
                 break;
         }
 
