@@ -1720,16 +1720,24 @@ MonoBehaviour:
   currentInformationObject: {fileID: 7228565532630783133}
   upgradeInformationObject: {fileID: 239844300067386913}
   maxLevelInformationObject: {fileID: 8123721410029228563}
-  turretAttackSpeed: 1
-  attackSpeedLevels: []
-  turretProjectileSpeed: 0
-  turretProjectileScale: 1
-  turretDamage: 0
-  damageLevels: 
-  turretRange: 0
-  rangeLevels: []
-  turretLuckDamage: 0
-  luckDamageLevels: 
+  turretAttackSpeed: 0.6
+  attackSpeedLevels:
+  - 0.8
+  - 1.1
+  - 1.5
+  - 2
+  turretProjectileSpeed: 3
+  turretProjectileScale: 1.3
+  turretDamage: 3
+  damageLevels: 050000000a0000000f00000014000000
+  turretRange: 2
+  rangeLevels:
+  - 2
+  - 2.2
+  - 2.4
+  - 2.6
+  turretLuckDamage: 10
+  luckDamageLevels: 0a0000000f000000160000001e000000
   projectileSpawnYOffset: 0
   turretLevel: 0
   currentFocus: 0
@@ -2505,7 +2513,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.8784314, g: 0.3882353, b: 0.07058824, a: 1}
+  m_Color: {r: 0.8773585, g: 0.27727836, b: 0.7376069, a: 1}
   m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -13424,7 +13432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &996739202402763173
 Transform:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3526968645703440080}
   - component: {fileID: 7991651054774928317}
   - component: {fileID: 5915129526703481074}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8947453650387773739}
   - component: {fileID: 8485413128501038513}
   - component: {fileID: 4745239485432690890}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 5932895283726373695}
   - component: {fileID: 3355634665043930036}
   - component: {fileID: 3405158520094058001}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Mana Bloom
   m_TagString: Option
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 146167105399421825}
   - component: {fileID: 3729399319865988201}
   - component: {fileID: 296154147311099009}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Blue Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

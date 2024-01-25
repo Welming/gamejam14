@@ -50,6 +50,10 @@ public class BlueTurretController : MonoBehaviour
     public List<float> slowLevels;
 
     [Range(0.0f, 10.0f)]
+    public float turretSlowLength;
+    public List<float> slowLengthLevels;
+
+    [Range(0.0f, 10.0f)]
     public float projectileSpawnYOffset;
 
     public int turretLevel;
@@ -114,10 +118,13 @@ public class BlueTurretController : MonoBehaviour
             attackTimer = 0;
             turretModel.GetComponent<Animator>().SetTrigger("IsAttacking");
             GameObject newProjectile = Instantiate(projectileType, gameObject.transform);
-            newProjectile.GetComponent<ProjectileController>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - projectileSpawnYOffset, gameObject.transform.position.z);
-            newProjectile.GetComponent<ProjectileController>().projectileSpeed = turretProjectileSpeed;
-            newProjectile.GetComponent<ProjectileController>().projectileDamage = turretDamage;
-            newProjectile.GetComponent<ProjectileController>().transform.localScale *= turretProjectileScale;
+            newProjectile.GetComponent<BlueProjectile>().startPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - projectileSpawnYOffset, gameObject.transform.position.z);
+            newProjectile.GetComponent<BlueProjectile>().projectileSpeed = turretProjectileSpeed;
+            newProjectile.GetComponent<BlueProjectile>().projectileDamage = turretDamage;
+            newProjectile.GetComponent<BlueProjectile>().aoeRange = turretAoeRange;
+            newProjectile.GetComponent<BlueProjectile>().projectileSlowness = turretSlow;
+            newProjectile.GetComponent<BlueProjectile>().projectileSlowLength = turretSlowLength;
+            newProjectile.GetComponent<BlueProjectile>().transform.localScale *= turretProjectileScale;
             for (int e = 0; e < enemyList.Count; e++)
             {
                 if (enemyList[e] == null)
@@ -129,8 +136,8 @@ public class BlueTurretController : MonoBehaviour
             {
                 if (enemyList[e] != null)
                 {
-                    newProjectile.GetComponent<ProjectileController>().targetObject = enemyList[e];
-                    newProjectile.GetComponent<ProjectileController>().initiated = true;
+                    newProjectile.GetComponent<BlueProjectile>().targetObject = enemyList[e];
+                    newProjectile.GetComponent<BlueProjectile>().initiated = true;
                     return;
                 }
             }
@@ -192,9 +199,10 @@ public class BlueTurretController : MonoBehaviour
         if(currentInformationObject.activeSelf)
         {
             currentInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             currentInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
             currentInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-Slow Range = " + aoeRangeLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Slow Time").GetComponent<TMP_Text>().text = "-Slow Length = " + slowLengthLevels[turretLevel].ToString("#0") + "s";
             currentInformationObject.transform.Find("Slow Amount").GetComponent<TMP_Text>().text = "-Slowness = " + (slowLevels[turretLevel] * 100).ToString() + "%";
         }
         if (upgradeInformationObject.activeSelf)
@@ -202,17 +210,19 @@ public class BlueTurretController : MonoBehaviour
             int index = turretLevel + 1;
             if(index >= damageLevels.Count) { index = damageLevels.Count - 1; }
             upgradeInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[index].ToString("#0.0");
-            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString("#0.0");
+            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString();
             upgradeInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[index].ToString("#0.0");
             upgradeInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-Slow Range = " + aoeRangeLevels[index].ToString("#0.0");
+            upgradeInformationObject.transform.Find("Slow Time").GetComponent<TMP_Text>().text = "-Slow Length = " + slowLengthLevels[index].ToString("#0") + "s";
             upgradeInformationObject.transform.Find("Slow Amount").GetComponent<TMP_Text>().text = "-Slowness = " + (slowLevels[index] * 100).ToString() + "%";
         }
         if (maxLevelInformationObject.activeSelf)
         {
             maxLevelInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             maxLevelInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
             maxLevelInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-Slow Range = " + aoeRangeLevels[turretLevel].ToString("#0.0");
+            maxLevelInformationObject.transform.Find("Slow Time").GetComponent<TMP_Text>().text = "-Slow Length = " + slowLengthLevels[turretLevel].ToString("#0") + "s";
             maxLevelInformationObject.transform.Find("Slow Amount").GetComponent<TMP_Text>().text = "-Slowness = " + (slowLevels[turretLevel] * 100).ToString() + "%";
         }
 

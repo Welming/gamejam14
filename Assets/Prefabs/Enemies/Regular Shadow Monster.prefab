@@ -216,12 +216,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  initialMovementSpeed: 0
   enemyMovementSpeed: 1
+  enemyModel: {fileID: 9036499307092307425}
   enemyHealthPoints: 10
+  initialHealthPoints: 0
   healthBar: {fileID: 4642538349902167434}
   directionsList: []
   distanceBeforeTurning: 0
   initiated: 0
+  slowTimer: 0
+  slowAmount: 0
+  poisonTimeLength: 1.5
+  poisonTicks: 0
+  poisonDamage: 0
 --- !u!1 &9036499307092307425
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +363,7 @@ MonoBehaviour:
   - {x: 0.22004604, y: -0.23226738, z: 0}
   m_ShapePathHash: 1031221013
   m_Mesh: {fileID: 0}
-  m_InstanceId: 101898
+  m_InstanceId: 915276
   m_LocalBounds:
     m_Center: {x: -0.0046334267, y: 0.058996677, z: 0}
     m_Extent: {x: 0.22732353, y: 0.29126406, z: 0}

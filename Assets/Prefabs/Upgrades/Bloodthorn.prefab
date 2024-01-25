@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3486153647756080416}
   - component: {fileID: 5928695633343269826}
   - component: {fileID: 5319177437239156914}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 3381796225908687644}
   - component: {fileID: 1542619054095356258}
   - component: {fileID: 4362145126710026058}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bloodthorn
   m_TagString: Option
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8890898489771522019}
   - component: {fileID: 421222022898600530}
   - component: {fileID: 6590727574345338669}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 6616178879553764248}
   - component: {fileID: 392503928371356171}
   - component: {fileID: 713540763766925056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Red Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

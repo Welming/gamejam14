@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fd76ae1ae8fd68e41b5af5777049a4f6
+guid: 10590b4440a104341b4986310d867389
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cauldron Bubble Start_0
+      name: Blue Calcifire Attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b4d5e677f971424b8ae926a07f919b5
-      internalID: -1777104934
+      spriteID: c064d4f70a3a90340bc08067e57d09ad
+      internalID: -1629332270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Bubble Start_1
+      name: Blue Calcifire Attack_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0559cd54abad5764dbdbb05a0ce7ac20
-      internalID: -269824557
+      spriteID: 1bc26bf5759fbc44cabf7b8e6d572a36
+      internalID: 1601475296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Bubble Start_2
+      name: Blue Calcifire Attack_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b7751d2aa35df24baa886f34bfbef6e
-      internalID: -868362407
+      spriteID: a2491b70a4f5ed342a9be2bd009a3aca
+      internalID: 1873282530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Bubble Start_3
+      name: Blue Calcifire Attack_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,92 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3136dbfcdbfc1a545878113e8a3681b7
-      internalID: 2001466419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cauldron Bubble Start_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4757f34b07e395740abf70a93b45d466
-      internalID: 2031077223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cauldron Bubble Start_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7ad68a38919e28b48b2d550f64fc39ea
-      internalID: 1878090140
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cauldron Bubble Start_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b10c9720c5fbf07429f2d8dc297e0938
-      internalID: -1858043613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cauldron Bubble Start_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3bb3ca9fba77c449be33d57b28b1453
-      internalID: -1794484099
+      spriteID: 2b8d5bddad078e949ae0ed1b7bfcb5e4
+      internalID: -1850402862
       vertices: []
       indices: 
       edges: []
@@ -301,14 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cauldron Bubble Start_0: -1777104934
-      Cauldron Bubble Start_1: -269824557
-      Cauldron Bubble Start_2: -868362407
-      Cauldron Bubble Start_3: 2001466419
-      Cauldron Bubble Start_4: 2031077223
-      Cauldron Bubble Start_5: 1878090140
-      Cauldron Bubble Start_6: -1858043613
-      Cauldron Bubble Start_7: -1794484099
+      Blue Calcifire Attack_0: -1629332270
+      Blue Calcifire Attack_1: 1601475296
+      Blue Calcifire Attack_2: 1873282530
+      Blue Calcifire Attack_3: -1850402862
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

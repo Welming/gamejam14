@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -190,26 +191,44 @@ public class TurretController : MonoBehaviour
             case 2:
                 redUpgradedTurretInformation.SetActive(true);
                 redUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + redUpgradedTurret.GetComponent<RedTurretController>().turretAttackSpeed.ToString("#0.0");
-                redUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + redUpgradedTurret.GetComponent<RedTurretController>().turretDamage.ToString("#0.0");
+                redUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + redUpgradedTurret.GetComponent<RedTurretController>().turretDamage.ToString();
                 redUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + redUpgradedTurret.GetComponent<RedTurretController>().turretRange.ToString("#0.0");
                 redUpgradedTurretInformation.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + redUpgradedTurret.GetComponent<RedTurretController>().turretAoeRange.ToString("#0.0");
                 break;
             case 3:
                 purpleUpgradedTurretInformation.SetActive(true);
+                purpleUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + purpleUpgradedTurret.GetComponent<PurpleTurretController>().turretAttackSpeed.ToString("#0.0");
+                purpleUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + purpleUpgradedTurret.GetComponent<PurpleTurretController>().turretDamage.ToString();
+                purpleUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + purpleUpgradedTurret.GetComponent<PurpleTurretController>().turretRange.ToString("#0.0");
+                purpleUpgradedTurretInformation.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + purpleUpgradedTurret.GetComponent<PurpleTurretController>().turretLuckDamage.ToString();
                 break;
             case 4:
                 blueUpgradedTurretInformation.SetActive(true);
+                blueUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + blueUpgradedTurret.GetComponent<BlueTurretController>().turretAttackSpeed.ToString("#0.0");
+                blueUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + blueUpgradedTurret.GetComponent<BlueTurretController>().turretDamage.ToString();
+                blueUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + blueUpgradedTurret.GetComponent<BlueTurretController>().turretRange.ToString("#0.0");
+                blueUpgradedTurretInformation.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + blueUpgradedTurret.GetComponent<BlueTurretController>().turretAoeRange.ToString("#0.0");
+                blueUpgradedTurretInformation.transform.Find("Slow Time").GetComponent<TMP_Text>().text = "-Slow Length = " + blueUpgradedTurret.GetComponent<BlueTurretController>().turretSlowLength.ToString("#0") + "s";
+                blueUpgradedTurretInformation.transform.Find("Slow Amount").GetComponent<TMP_Text>().text = "-Slowness = " + (blueUpgradedTurret.GetComponent<BlueTurretController>().turretSlow * 100).ToString() + "%";
                 break;
             case 5:
                 orangeUpgradedTurretInformation.SetActive(true);
+                orangeUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + orangeUpgradedTurret.GetComponent<OrangeTurretController>().turretAttackSpeed.ToString("#0.0");
+                orangeUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + orangeUpgradedTurret.GetComponent<OrangeTurretController>().turretDamage.ToString();
+                orangeUpgradedTurretInformation.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + orangeUpgradedTurret.GetComponent<OrangeTurretController>().turretAoeRange.ToString("#0.0");
                 break;
             case 6:
                 greenUpgradedTurretInformation.SetActive(true);
+                greenUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + greenUpgradedTurret.GetComponent<GreenTurretController>().turretAttackSpeed.ToString("#0.0");
+                greenUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + greenUpgradedTurret.GetComponent<GreenTurretController>().turretDamage.ToString();
+                greenUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + greenUpgradedTurret.GetComponent<GreenTurretController>().turretRange.ToString("#0.0");
+                greenUpgradedTurretInformation.transform.Find("Poison Ticks").GetComponent<TMP_Text>().text = "-Poison Ticks = " + greenUpgradedTurret.GetComponent<GreenTurretController>().turretTicks.ToString();
+                greenUpgradedTurretInformation.transform.Find("Poison Damage").GetComponent<TMP_Text>().text = "-Poison Dmg = " + greenUpgradedTurret.GetComponent<GreenTurretController>().turretPoisonDamage.ToString();
                 break;
             case 8:
                 yellowUpgradedTurretInformation.SetActive(true);
                 yellowUpgradedTurretInformation.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretAttackSpeed.ToString("#0.0");
-                yellowUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretDamage.ToString("#0.0");
+                yellowUpgradedTurretInformation.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretDamage.ToString();
                 yellowUpgradedTurretInformation.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + yellowUpgradedTurret.GetComponent<YellowTurretController>().turretRange.ToString("#0.0");
                 break;
         }

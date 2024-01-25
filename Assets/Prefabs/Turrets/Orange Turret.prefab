@@ -1377,22 +1377,20 @@ MonoBehaviour:
   currentInformationObject: {fileID: 7228565532630783133}
   upgradeInformationObject: {fileID: 239844300067386913}
   maxLevelInformationObject: {fileID: 8123721410029228563}
-  turretAttackSpeed: 1
+  turretAttackSpeed: 0.3
   attackSpeedLevels:
-  - 1
-  - 1.5
-  - 2
-  - 2.5
-  turretProjectileSpeed: 3
-  turretProjectileScale: 1
-  turretDamage: 5
-  damageLevels: 050000000a0000000f00000014000000
+  - 0.7
+  - 0.8
+  - 0.9
+  - 1.1
+  turretDamage: 12
+  damageLevels: 080000000c0000001000000016000000
   turretAoeRange: 2
   aoeRangeLevels:
   - 2
-  - 2.5
-  - 3
-  - 3.5
+  - 2.4
+  - 2.8
+  - 3.2
   projectileSpawnYOffset: 0.06
   turretLevel: 0
   currentFocus: 0
@@ -2292,7 +2290,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -2103961595, guid: 51b4606f8b1c4e641981aaba61a365db, type: 3}
-  m_Color: {r: 1, g: 0.71054655, b: 0.3160377, a: 1}
+  m_Color: {r: 1, g: 0.7978504, b: 0.25943398, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

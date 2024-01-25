@@ -9,7 +9,6 @@ public class SunlightIntensity : MonoBehaviour
     float scalingMultiplier = 1.0f;
     public float startingIntensity;
 
-
     private void Awake()
     {
         gameController = GameObject.Find("Game Controller");

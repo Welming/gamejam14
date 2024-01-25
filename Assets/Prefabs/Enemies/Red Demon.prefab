@@ -195,8 +195,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 9.71, y: 7.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4391847897788947401}
   - {fileID: 2618714587444005605}
@@ -216,12 +216,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 0}
+  initialMovementSpeed: 0
   enemyMovementSpeed: 1
-  enemyHealthPoints: 20
+  enemyModel: {fileID: 9036499307092307425}
+  enemyHealthPoints: 25
+  initialHealthPoints: 0
   healthBar: {fileID: 4642538349902167434}
   directionsList: []
   distanceBeforeTurning: 0
   initiated: 0
+  slowTimer: 0
+  slowAmount: 0
+  poisonTimeLength: 1.5
+  poisonTicks: 0
+  poisonDamage: 0
 --- !u!1 &9036499307092307425
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +363,7 @@ MonoBehaviour:
   - {x: 0.22004604, y: -0.23226738, z: 0}
   m_ShapePathHash: 1031221013
   m_Mesh: {fileID: 0}
-  m_InstanceId: 108192
+  m_InstanceId: 773642
   m_LocalBounds:
     m_Center: {x: -0.0046334267, y: 0.058996677, z: 0}
     m_Extent: {x: 0.22732353, y: 0.29126406, z: 0}

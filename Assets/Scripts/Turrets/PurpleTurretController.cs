@@ -48,8 +48,6 @@ public class PurpleTurretController : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float projectileSpawnYOffset;
 
-
-
     public int turretLevel;
 
     public bool currentFocus;
@@ -193,25 +191,25 @@ public class PurpleTurretController : MonoBehaviour
         if(currentInformationObject.activeSelf)
         {
             currentInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             currentInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
-            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[turretLevel].ToString();
         }
         if (upgradeInformationObject.activeSelf)
         {
             int index = turretLevel + 1;
             if(index >= damageLevels.Count) { index = damageLevels.Count - 1; }
             upgradeInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[index].ToString("#0.0");
-            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString("#0.0");
+            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString();
             upgradeInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[index].ToString("#0.0");
-            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[index].ToString("#0.0");
+            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[index].ToString();
         }
         if (maxLevelInformationObject.activeSelf)
         {
             maxLevelInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             maxLevelInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
-            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Luck Damage").GetComponent<TMP_Text>().text = "-Luck Dmg = " + luckDamageLevels[turretLevel].ToString();
         }
 
         for (int i = 0; i < enemyList.Count; i++)

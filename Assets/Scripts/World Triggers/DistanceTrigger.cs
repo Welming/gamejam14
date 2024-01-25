@@ -5,6 +5,7 @@ using UnityEngine;
 public class DistanceTrigger : MonoBehaviour
 {
     public GameObject triggeredObject;
+    public GameObject tutorialTreeLight;
     public GameObject trackedObject;
     public float detectionRange;
     public bool enable;
@@ -21,6 +22,16 @@ public class DistanceTrigger : MonoBehaviour
             if (triggeredObject.activeSelf && !enable)
             {
                 triggeredObject.SetActive(false);
+            }
+
+            if (!tutorialTreeLight.activeSelf && enable)
+            {
+                tutorialTreeLight.SetActive(true);
+            }
+
+            if (tutorialTreeLight.activeSelf && !enable)
+            {
+                tutorialTreeLight.SetActive(false);
             }
         }
     }

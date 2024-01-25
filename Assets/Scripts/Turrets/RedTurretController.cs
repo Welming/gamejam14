@@ -191,7 +191,7 @@ public class RedTurretController : MonoBehaviour
         if(currentInformationObject.activeSelf)
         {
             currentInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            currentInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             currentInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
             currentInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + aoeRangeLevels[turretLevel].ToString("#0.0");
         }
@@ -200,14 +200,14 @@ public class RedTurretController : MonoBehaviour
             int index = turretLevel + 1;
             if(index >= damageLevels.Count) { index = damageLevels.Count - 1; }
             upgradeInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[index].ToString("#0.0");
-            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString("#0.0");
+            upgradeInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[index].ToString();
             upgradeInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[index].ToString("#0.0");
             upgradeInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + aoeRangeLevels[index].ToString("#0.0");
         }
         if (maxLevelInformationObject.activeSelf)
         {
             maxLevelInformationObject.transform.Find("Attack Speed").GetComponent<TMP_Text>().text = "-Atk Spd = " + attackSpeedLevels[turretLevel].ToString("#0.0");
-            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString("#0.0");
+            maxLevelInformationObject.transform.Find("Attack Damage").GetComponent<TMP_Text>().text = "-Atk Dmg = " + damageLevels[turretLevel].ToString();
             maxLevelInformationObject.transform.Find("Attack Range").GetComponent<TMP_Text>().text = "-Atk Range = " + rangeLevels[turretLevel].ToString("#0.0");
             maxLevelInformationObject.transform.Find("AOE Range").GetComponent<TMP_Text>().text = "-AOE Range = " + aoeRangeLevels[turretLevel].ToString("#0.0");
         }

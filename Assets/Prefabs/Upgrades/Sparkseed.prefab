@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2908536658956303377}
   - component: {fileID: 843271588772563306}
   - component: {fileID: 648055143654540674}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 5834397254255196851}
   - component: {fileID: 5498601624127001810}
   - component: {fileID: 2479743474616734970}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sparkseed
   m_TagString: Option
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_ForceSendLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 5728739424679685155}
   - component: {fileID: 4592451620188501734}
   - component: {fileID: 8674911078371239038}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Yellow Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5195,7 +5195,7 @@ GameObject:
   - component: {fileID: 1282732383400458354}
   - component: {fileID: 8036592600596784864}
   - component: {fileID: 278476141404756594}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}

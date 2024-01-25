@@ -11,12 +11,14 @@ public class EnemyController : MonoBehaviour
     [Range(0.0f, 10.0f)]
     public float enemyMovementSpeed = 1;
 
+    public GameObject enemyModel;
+    Color initialColor;
+
     [Range(0, 100)]
     public int enemyHealthPoints = 10;
     [SerializeField]
     private int initialHealthPoints;
     public GameObject healthBar;
-
 
     public List<GameObject> directionsList;
     public float distanceBeforeTurning;
@@ -25,8 +27,13 @@ public class EnemyController : MonoBehaviour
     // PUBLIC FOR TESTING
     public bool initiated;
 
-    float slowTimer;
-    float slowAmount;
+    public float slowTimer;
+    public float slowAmount;
+
+    public float poisonTimeLength = 2.0f;
+    private float poisonTimer;
+    public int poisonTicks;
+    public int poisonDamage;
 
     private int pathIndex;
     private int directionMemory;
@@ -80,20 +87,43 @@ public class EnemyController : MonoBehaviour
         if(slowTimer > 0)
         {
             slowTimer -= Time.deltaTime;
-
+            enemyMovementSpeed = initialMovementSpeed * (1 - slowAmount);
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;
+            enemyModel.GetComponent<SpriteRenderer>().color = new Color(enemyModel.GetComponent<SpriteRenderer>().color.r, enemyModel.GetComponent<SpriteRenderer>().color.g, enemyModel.GetComponent<SpriteRenderer>().color.b, 1.0f);
         }
         else
         {
-
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor;
+            enemyMovementSpeed = initialMovementSpeed;
         }
     }
 
+    private void PoisonEnemy()
+    {
+        if(poisonTicks > 0 && poisonTimer <= 0) 
+        { 
+            poisonTicks--;
+            enemyHealthPoints -= poisonDamage;
+            poisonTimer = poisonTimeLength;
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;
+            enemyModel.GetComponent<SpriteRenderer>().color = new Color(enemyModel.GetComponent<SpriteRenderer>().color.r, enemyModel.GetComponent<SpriteRenderer>().color.g, enemyModel.GetComponent<SpriteRenderer>().color.b, 1.0f);
+        }
+        if (poisonTimer > 0)
+        {
+            poisonTimer -= Time.deltaTime;
+        }
+        if(poisonTicks == 0 && poisonTimer <= 0)
+        {
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor;
+        }
+    }
 
-    private void Start()
+    private void Awake()
     {
         gameController = GameObject.Find("Game Controller");
         initialHealthPoints = enemyHealthPoints;
         initialMovementSpeed = enemyMovementSpeed;
+        initialColor = enemyModel.GetComponent<SpriteRenderer>().color;
         animator = gameObject.transform.Find("Model").GetComponent<Animator>().GetComponent<Animator>();
         animator.SetBool("Walk", true);
     }
@@ -101,8 +131,10 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         SlowEnemy();
+        PoisonEnemy();
 
-        float healthBarScale = (float)enemyHealthPoints / (float)initialHealthPoints;
+        float healthBarScale = (float)((float)enemyHealthPoints / (float)initialHealthPoints);
+        if (healthBarScale > 1) { healthBarScale = 1; }
         healthBar.transform.localScale = new Vector3(healthBarScale, 1.0f, 1.0f);
         if (initiated) MoveOnPath();
         if(enemyHealthPoints <= 0)

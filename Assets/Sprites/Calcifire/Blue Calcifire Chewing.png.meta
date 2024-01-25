@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c2eefe2612690b41b5de356af3bfeb4
+guid: 467fa45101014dd429385ea4a7205710
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cauldron Idle_0
+      name: Blue Calcifire Chewing_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf9bc67a59e901a4196550b025694ef3
-      internalID: -128239402
+      spriteID: bfb86b76ac8517c45b334a6e83e1e617
+      internalID: -783916212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Idle_1
+      name: Blue Calcifire Chewing_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 219ad517c40e77145989d4a7c9e1c304
-      internalID: 1983997091
+      spriteID: eb90e406bc90d0c42a959ce4bf580cff
+      internalID: 1348718292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Idle_2
+      name: Blue Calcifire Chewing_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2ac32138677d5647a140476b9b89f94
-      internalID: -38253510
+      spriteID: 16e2629229e16d641bae85cbab6a5b22
+      internalID: 23624032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cauldron Idle_3
+      name: Blue Calcifire Chewing_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,8 +200,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23acc314bcdcfd6458b722b90ae65613
-      internalID: -2115592696
+      spriteID: 5c2c1b616c067e24fb1c819f5364ab61
+      internalID: -2055295903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da210808e35bd74c8267699cbafdf57
+      internalID: 215615741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bb369b114def64181d4cd1d6b7757c
+      internalID: -1387575928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 156beada7d0972546b7ad2d6c46856a0
+      internalID: 1469188008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5ce40c4ff1715c4a93514622e07923b
+      internalID: -1028361972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94a3290fc063e949ba793b0e5f9124d
+      internalID: 198175493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blue Calcifire Chewing_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08cdafd22979e83428625c0c2d21af42
+      internalID: 1263100314
       vertices: []
       indices: 
       edges: []
@@ -217,10 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cauldron Idle_0: -128239402
-      Cauldron Idle_1: 1983997091
-      Cauldron Idle_2: -38253510
-      Cauldron Idle_3: -2115592696
+      Blue Calcifire Chewing_0: -783916212
+      Blue Calcifire Chewing_1: 1348718292
+      Blue Calcifire Chewing_2: 23624032
+      Blue Calcifire Chewing_3: -2055295903
+      Blue Calcifire Chewing_4: 215615741
+      Blue Calcifire Chewing_5: -1387575928
+      Blue Calcifire Chewing_6: 1469188008
+      Blue Calcifire Chewing_7: -1028361972
+      Blue Calcifire Chewing_8: 198175493
+      Blue Calcifire Chewing_9: 1263100314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -88,6 +88,21 @@ public class TurretLocationController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(gameController.GetComponent<GameController>().turretMenuOpened)
+        {
+            if(gameObject.GetComponent<BoxCollider2D>().enabled)
+            {
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
+        else
+        {
+            if (!gameObject.GetComponent<BoxCollider2D>().enabled)
+            {
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            }
+        }
+
         gameController.GetComponent<GameController>().MenuOptionsCheck(ref currentFocus, menuOptions, menuOptionsList);
 
         HoverGlowTimer();

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5063648750709855666}
   - component: {fileID: 6433840544558609452}
   m_Layer: 0
-  m_Name: Red Turret AOE
+  m_Name: Blue Turret AOE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.70980394, g: 0.17030083, b: 0.17030083, a: 0.42352942}
+  m_Color: {r: 0.21982914, g: 0.38343292, b: 0.7169812, a: 0.42352942}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

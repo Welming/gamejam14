@@ -71,6 +71,8 @@ public class GameController : MonoBehaviour
     public float cameraCloseEnoughDistance;
     [Range(0.0f, 2.0f)]
     public float hoverGlowInitializedTimer;
+    [Range(0.0f, 2.0f)]
+    public float menuLightDimIntensity;
 
     private Vector3 cameraVelocity = Vector3.zero;
 
@@ -104,6 +106,54 @@ public class GameController : MonoBehaviour
             return; 
         }
 
+        if (rayHit.collider.gameObject.CompareTag("Option"))
+        {
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<BlueTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<BlueTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<GreenTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<GreenTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<PurpleTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<PurpleTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<OrangeTurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<OrangeTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+            return;
+        }
+
         if (rayHit.collider.gameObject.CompareTag("Turret") && !turretMenuOpened)
         {
             if (rayHit.collider.gameObject.GetComponent<TurretLocationController>() != null)
@@ -132,34 +182,30 @@ public class GameController : MonoBehaviour
                 turretMenuOpened = true;
                 return;
             }
-        }
-
-        if (rayHit.collider.gameObject.CompareTag("Option"))
-        {
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>() != null)
+            if (rayHit.collider.gameObject.GetComponent<BlueTurretController>() != null)
             {
-                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<RedTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+                rayHit.collider.gameObject.GetComponent<BlueTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
             }
-
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>() != null)
+            if (rayHit.collider.gameObject.GetComponent<GreenTurretController>() != null)
             {
-                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<YellowTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+                rayHit.collider.gameObject.GetComponent<GreenTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
             }
-
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
+            if (rayHit.collider.gameObject.GetComponent<PurpleTurretController>() != null)
             {
-                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+                rayHit.collider.gameObject.GetComponent<PurpleTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
             }
-
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
+            if (rayHit.collider.gameObject.GetComponent<OrangeTurretController>() != null)
             {
-                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+                rayHit.collider.gameObject.GetComponent<OrangeTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
             }
-            if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>() != null)
-            {
-                rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<TurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
-            }
-            return;           
         }
 
         turretMenuOpened = false;
