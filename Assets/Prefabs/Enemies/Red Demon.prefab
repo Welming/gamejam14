@@ -219,9 +219,9 @@ MonoBehaviour:
   deathAnimation: {fileID: 2560866035905375065, guid: 022b346bddaf4184bb4ea5ada488a7d9, type: 3}
   rewardAnimation: {fileID: 2736524526370895464, guid: 15c1861440fb9a74da586318e3df04d3, type: 3}
   initialMovementSpeed: 0
-  enemyMovementSpeed: 0.4
+  enemyMovementSpeed: 0.5
   enemyModel: {fileID: 9036499307092307425}
-  enemyHealthPoints: 25
+  enemyHealthPoints: 20
   initialHealthPoints: 0
   healthBar: {fileID: 4642538349902167434}
   embersReward: 20
@@ -366,7 +366,7 @@ MonoBehaviour:
   - {x: 0.22004604, y: -0.23226738, z: 0}
   m_ShapePathHash: 1031221013
   m_Mesh: {fileID: 0}
-  m_InstanceId: 201228
+  m_InstanceId: 411118
   m_LocalBounds:
     m_Center: {x: -0.0046334267, y: 0.058996677, z: 0}
     m_Extent: {x: 0.22732353, y: 0.29126406, z: 0}

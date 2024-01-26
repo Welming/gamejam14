@@ -1720,16 +1720,16 @@ MonoBehaviour:
   currentInformationObject: {fileID: 7228565532630783133}
   upgradeInformationObject: {fileID: 239844300067386913}
   maxLevelInformationObject: {fileID: 8123721410029228563}
-  turretAttackSpeed: 0.7
+  turretAttackSpeed: 1
   attackSpeedLevels:
-  - 0.7
-  - 0.9
+  - 1
   - 1.2
-  - 1.5
+  - 1.4
+  - 1.7
   turretProjectileSpeed: 3
   turretProjectileScale: 1.6
   turretDamage: 8
-  damageLevels: 0800000010000000180000001e000000
+  damageLevels: 080000000c0000001000000014000000
   turretRange: 2.5
   rangeLevels:
   - 2.5
@@ -1739,9 +1739,9 @@ MonoBehaviour:
   turretAoeRange: 1.3
   aoeRangeLevels:
   - 1.3
-  - 1.6
-  - 1.9
-  - 2.2
+  - 1.4
+  - 1.5
+  - 1.7
   projectileSpawnYOffset: 0.06
   turretLevel: 0
   currentFocus: 0

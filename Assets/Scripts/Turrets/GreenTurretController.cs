@@ -45,7 +45,7 @@ public class GreenTurretController : MonoBehaviour
     public int turretTicks;
     public List<int> ticksLevels;
 
-    [Range(0.0f, 10.0f)]
+    [Range(0.0f, 30.0f)]
     public int turretPoisonDamage;
     public List<int> poisonDamageLevels;
 

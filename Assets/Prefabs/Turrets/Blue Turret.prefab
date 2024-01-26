@@ -2428,12 +2428,12 @@ MonoBehaviour:
   - 1.6
   - 2
   - 2.4
-  turretSlow: 0.1
+  turretSlow: 0.3
   slowLevels:
-  - 0.2
   - 0.3
   - 0.4
   - 0.5
+  - 0.6
   turretSlowLength: 2
   slowLengthLevels:
   - 2

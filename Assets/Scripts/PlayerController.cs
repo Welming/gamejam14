@@ -124,7 +124,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) 
+        {
+            rigidBody.velocity = new Vector2(0, 0);
+            return; 
+        }
 
         AdjustLight();
 

@@ -24,6 +24,8 @@ public class SeedsRewardAnimation : MonoBehaviour
 
     void Update()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         speed *= acceleration;
         float step = speed * Time.deltaTime;
         gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, playerModel.transform.position, step);

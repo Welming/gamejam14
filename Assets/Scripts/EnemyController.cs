@@ -93,7 +93,7 @@ public class EnemyController : MonoBehaviour
         {
             slowTimer -= Time.deltaTime;
             enemyMovementSpeed = initialMovementSpeed * (1 - slowAmount);
-            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 2.0f;
             enemyModel.GetComponent<SpriteRenderer>().color = new Color(enemyModel.GetComponent<SpriteRenderer>().color.r, enemyModel.GetComponent<SpriteRenderer>().color.g, enemyModel.GetComponent<SpriteRenderer>().color.b, 1.0f);
         }
         else
@@ -110,7 +110,7 @@ public class EnemyController : MonoBehaviour
             poisonTicks--;
             enemyHealthPoints -= poisonDamage;
             poisonTimer = poisonTimeLength;
-            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 1.4f;  
+            enemyModel.GetComponent<SpriteRenderer>().color = initialColor / 2.0f;  
             enemyModel.GetComponent<SpriteRenderer>().color = new Color(enemyModel.GetComponent<SpriteRenderer>().color.r, enemyModel.GetComponent<SpriteRenderer>().color.g, enemyModel.GetComponent<SpriteRenderer>().color.b, 1.0f);
         }
         if (poisonTimer > 0)
