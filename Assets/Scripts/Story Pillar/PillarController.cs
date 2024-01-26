@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PillarController : MonoBehaviour
+{
+    public GameObject gameController;
+    public GameObject menuOptions;
+    public List<GameObject> menuOptionsList;
+
+    public bool currentFocus;
+
+    public void ActivateButton(int index)
+    {
+        switch (index)
+        {
+            case -1:
+                gameController.GetComponent<GameController>().turretMenuOpened = false;
+                break;
+        }
+    }
+
+    void Start()
+    {
+        gameController = GameObject.Find("Game Controller");
+        gameController.GetComponent<GameController>().turretMenuOpened = true;
+    }
+
+    void FixedUpdate()
+    {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        gameController.GetComponent<GameController>().MenuOptionsCheck(ref currentFocus, menuOptions, menuOptionsList);
+    }
+}

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PurpleProjectile : MonoBehaviour
 {
+    public GameObject gameController;
+    
     [Range(0.0f, 1.0f)]
     public float spriteYOffset;
 
@@ -20,6 +22,7 @@ public class PurpleProjectile : MonoBehaviour
 
     private void Start()
     {
+        gameController = GameObject.Find("Game Controller");
         gameObject.transform.position = startPosition;
         randomDamage = projectileDamage + (int)Mathf.Ceil(Random.Range(-1 * projectileLuckDamage, projectileLuckDamage));
         if (randomDamage < 0) { randomDamage = 0; }
@@ -42,7 +45,9 @@ public class PurpleProjectile : MonoBehaviour
 
     void Update()
     {
-        if(targetObject != null)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+        
+        if (targetObject != null)
         {
 
         }

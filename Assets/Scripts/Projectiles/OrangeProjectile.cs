@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OrangeProjectile : MonoBehaviour
 {
+    public GameObject gameController;
+
     [Range(0.0f, 1.0f)]
     public float spriteYOffset;
 
@@ -16,6 +18,7 @@ public class OrangeProjectile : MonoBehaviour
 
     private void Start()
     {
+        gameController = GameObject.Find("Game Controller");
         gameObject.transform.position = startPosition;
     }
 
@@ -35,6 +38,8 @@ public class OrangeProjectile : MonoBehaviour
 
     void Update()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         if (initiated)
         {
             AOEDamage();

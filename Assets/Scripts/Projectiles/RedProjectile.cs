@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RedProjectile : MonoBehaviour
 {
+    public GameObject gameController;
+    
     [Range(0.0f, 1.0f)]
     public float spriteYOffset;
 
@@ -20,6 +22,7 @@ public class RedProjectile : MonoBehaviour
 
     private void Start()
     {
+        gameController = GameObject.Find("Game Controller");
         gameObject.transform.position = startPosition;
     }
 
@@ -54,6 +57,8 @@ public class RedProjectile : MonoBehaviour
 
     void Update()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+        
         if (targetObject != null)
         {
 

@@ -138,6 +138,11 @@ public class GameController : MonoBehaviour
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<OrangeTurretController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
             }
 
+            if (rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<PillarController>() != null)
+            {
+                rayHit.collider.gameObject.transform.parent.transform.parent.GetComponent<PillarController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
+            }
+
             if (rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>() != null)
             {
                 rayHit.collider.gameObject.transform.parent.transform.parent.transform.parent.GetComponent<TurretLocationController>().ActivateButton(rayHit.collider.gameObject.GetComponent<OptionInformation>().buttonIndex);
@@ -203,6 +208,16 @@ public class GameController : MonoBehaviour
             if (rayHit.collider.gameObject.GetComponent<OrangeTurretController>() != null)
             {
                 rayHit.collider.gameObject.GetComponent<OrangeTurretController>().currentFocus = true;
+                turretMenuOpened = true;
+                return;
+            }
+        }
+
+        if (rayHit.collider.gameObject.CompareTag("Pillar") && !turretMenuOpened)
+        {
+            if (rayHit.collider.gameObject.GetComponent<PillarController>() != null)
+            {
+                rayHit.collider.gameObject.GetComponent<PillarController>().currentFocus = true;
                 turretMenuOpened = true;
                 return;
             }

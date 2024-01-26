@@ -174,7 +174,9 @@ public class YellowTurretController : MonoBehaviour
 
     private void Update()
     {
-        if(levelObject.activeSelf)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if (levelObject.activeSelf)
         {
             levelObject.GetComponent<TMP_Text>().text = "lvl " + (turretLevel + 1).ToString();
         }

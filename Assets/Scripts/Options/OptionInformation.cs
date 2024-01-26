@@ -33,7 +33,7 @@ public class OptionInformation : MonoBehaviour
         {
             if(flipAnimation)
             {
-                gameObject.GetComponent<RectTransform>().localPosition = new Vector3((Mathf.SmoothStep(-gameController.GetComponent<GameController>().textEffectDistance + 0.004f, gameController.GetComponent<GameController>().textEffectDistance, Mathf.PingPong(Time.time / gameController.GetComponent<GameController>().textEffectSpeed * -1, 1)) + startPosition.x), startPosition.y, 0.0f);
+                gameObject.GetComponent<RectTransform>().localPosition = new Vector3((-1 * Mathf.SmoothStep(-gameController.GetComponent<GameController>().textEffectDistance + 0.004f, gameController.GetComponent<GameController>().textEffectDistance, Mathf.PingPong(Time.time / gameController.GetComponent<GameController>().textEffectSpeed, 1)) + startPosition.x), startPosition.y, 0.0f);
             }
             else
             {

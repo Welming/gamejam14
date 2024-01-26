@@ -355,7 +355,9 @@ public class TurretController : MonoBehaviour
 
     private void Update()
     {
-        if(!currentFocus && combinationAddedItems.Count > 0)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if (!currentFocus && combinationAddedItems.Count > 0)
         {
             for(int i = 0; i < combinationAddedItems.Count;i++)
             {

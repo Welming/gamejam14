@@ -8,6 +8,7 @@ TagManager:
   - Turret
   - Option
   - Enemy
+  - Pillar
   layers:
   - Default
   - TransparentFX

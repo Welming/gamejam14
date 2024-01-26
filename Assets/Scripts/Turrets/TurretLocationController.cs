@@ -88,7 +88,9 @@ public class TurretLocationController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(gameController.GetComponent<GameController>().turretMenuOpened)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if (gameController.GetComponent<GameController>().turretMenuOpened)
         {
             if(gameObject.GetComponent<BoxCollider2D>().enabled)
             {

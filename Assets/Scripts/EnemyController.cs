@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject gameController;
-    public GameObject playerObject;
+    public GameObject deathAnimation;
+    public GameObject rewardAnimation;
 
     [SerializeField]
     private float initialMovementSpeed;
@@ -20,6 +21,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public int initialHealthPoints;
     public GameObject healthBar;
+
+    public int embersReward;
 
     public List<GameObject> directionsList;
     public float distanceBeforeTurning;
@@ -38,6 +41,7 @@ public class EnemyController : MonoBehaviour
 
     private int pathIndex;
     private int directionMemory;
+
 
     private void MoveOnPath()
     {
@@ -119,8 +123,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
-
     private void Awake()
     {
         gameController = GameObject.Find("Game Controller");
@@ -132,6 +134,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         SlowEnemy();
         PoisonEnemy();
 
@@ -141,6 +145,10 @@ public class EnemyController : MonoBehaviour
         if (initiated) MoveOnPath();
         if(enemyHealthPoints <= 0)
         {
+            GameObject death = Instantiate(deathAnimation);
+            death.transform.position = enemyModel.transform.position;
+            GameObject reward = Instantiate(rewardAnimation);
+            reward.GetComponent<RewardAnimation>().rewardAmount = (int)Mathf.Ceil((float)embersReward * gameController.GetComponent<GameController>().enemyScaling);
             Destroy(gameObject);
         }
     }

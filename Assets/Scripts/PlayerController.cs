@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject gameController;
+
     public InputActionMap playerControls;
     [Range(1.0f, 8.0f)]
     public float moveSpeed = 3;
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
     public void MoveCharacter(InputAction.CallbackContext context)
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         if (context.performed)
         {
             moveDirection = context.ReadValue<Vector2>();
@@ -73,7 +77,9 @@ public class PlayerController : MonoBehaviour
 
     public void RunButton(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if (context.performed)
         {
             moveSpeed = runSpeed;
         }
@@ -85,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        gameController = GameObject.Find("Game Controller");
         animator = gameObject.transform.Find("Model").GetComponent<Animator>().GetComponent<Animator>();
         rigidBody = gameObject.transform.Find("Model").GetComponent<Rigidbody2D>();
     }
@@ -117,6 +124,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
         AdjustLight();
 
         rigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GreenTurretProjectile : MonoBehaviour
 {
+    public GameObject gameController;
+
     [Range(0.0f, 1.0f)]
     public float spriteYOffset;
 
@@ -20,6 +22,7 @@ public class GreenTurretProjectile : MonoBehaviour
 
     private void Start()
     {
+        gameController = GameObject.Find("Game Controller");
         gameObject.transform.position = startPosition;
     }
 
@@ -47,7 +50,9 @@ public class GreenTurretProjectile : MonoBehaviour
 
     void Update()
     {
-        if(targetObject != null)
+        if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if (targetObject != null)
         {
 
         }
