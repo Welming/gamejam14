@@ -9,6 +9,8 @@ public class SpawnerController : MonoBehaviour
     public List<int> enemyQuantitiesList;
     public List<GameObject> directionsList;
 
+    public GameObject dangerObject;
+
     [Range(0.0f, 10.0f)]
     public float enemySpeedModifier = 1.0f;
     [Range(0.0f, 10.0f)]
@@ -61,6 +63,18 @@ public class SpawnerController : MonoBehaviour
     void Update()
     {
         if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
+
+        if(gameController.GetComponent<GameController>().waveActive)
+        {
+            if(dangerObject.activeSelf)
+            {
+                dangerObject.SetActive(false);
+            }
+        }
+        else if (!dangerObject.activeSelf)
+        {
+            dangerObject.SetActive(true);
+        }
 
         if (activated && gameController.GetComponent<GameController>().waveActive) DispenseWaves();
     }

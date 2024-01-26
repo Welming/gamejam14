@@ -47,6 +47,14 @@ public class UI_VariableToText : MonoBehaviour
             case 5:
                 importantVariable = (int)Mathf.Floor(gameController.GetComponent<GameController>().enemyScaling * 100);
                 break;
+            // HEALTH POINTS
+            case 6:
+                importantVariable = gameController.GetComponent<GameController>().healthPoints;
+                break;
+            // HEALTH POINTS
+            case 7:
+                importantVariable = gameController.GetComponent<GameController>().emberTotalCount;
+                break;
         }
 
         if (!flipTexts) { textComponent.SetText(initialText + importantVariable); }

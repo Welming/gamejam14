@@ -148,7 +148,7 @@ public class EnemyController : MonoBehaviour
             GameObject death = Instantiate(deathAnimation);
             death.transform.position = enemyModel.transform.position;
             GameObject reward = Instantiate(rewardAnimation);
-            reward.GetComponent<RewardAnimation>().rewardAmount = (int)Mathf.Ceil((float)embersReward * gameController.GetComponent<GameController>().enemyScaling);
+            reward.GetComponent<RewardAnimation>().rewardAmount = (int)Mathf.Ceil((float)embersReward * gameController.GetComponent<GameController>().enemyScaling);           
             Destroy(gameObject);
         }
     }

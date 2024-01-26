@@ -12,6 +12,13 @@ public class GameController : MonoBehaviour
     private GameObject playerModel;
     public GameObject turretFloorGlowLight;
     public InputAction clickControls;
+    public GameObject pauseMenuObject;
+    public GameObject gameOverObject;
+
+    public GameObject bloodthorneReward;
+    public GameObject manaBloomReward;
+    public GameObject sparkseedReward;
+
 
     [Range(0.0f, 3.0f)]
     public float spawnPeriod = 1;
@@ -24,10 +31,6 @@ public class GameController : MonoBehaviour
     public int spawnersMaximumScaling = 10;
     [Range(0.0f, 10.0f)]
     public float enemyScaling = 1.0f;
-
-    [Range(0, 10)]
-    public int cycleLength;
-    private float cycleTimer;
 
     [Range(0.0f, 10.0f)]
     public float spriteScaling = 1.0f;
@@ -49,6 +52,7 @@ public class GameController : MonoBehaviour
     public int healthPoints = 10;
 
     public int emberCount = 0;
+    public int emberTotalCount = 0;
 
     public int bloodthorneCount = 0;
     public int manaBloomCount = 0;
@@ -57,7 +61,6 @@ public class GameController : MonoBehaviour
     public float waveTimer;
     public float waveLength = 60;
     public bool waveActive = true;
-    public int waveCount;
 
     public List<int> turretUpgradeCosts;
 
@@ -88,8 +91,11 @@ public class GameController : MonoBehaviour
                 enemyScaling += spawnersScalingSpeed * Time.deltaTime;
             }
         }
-        if (waveTimer <= 0)
+        if (waveTimer <= 0 && waveActive)
         {
+            Instantiate(bloodthorneReward);
+            Instantiate(manaBloomReward);
+            Instantiate(sparkseedReward);
             waveActive = false;
         }
     }
@@ -291,11 +297,19 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerModel = player.transform.Find("Model").gameObject;
+        emberTotalCount = emberCount;
     }
 
     void FixedUpdate()
     {
         if (pauseMenuOpened) { return; }
+
+        if(healthPoints <= 0)
+        {
+            pauseMenuObject.SetActive(false);
+            gameOverObject.SetActive(true);
+            pauseMenuOpened = true;
+        }
 
         // Waves
         WavesCycling();

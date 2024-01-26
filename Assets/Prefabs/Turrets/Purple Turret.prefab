@@ -1720,15 +1720,15 @@ MonoBehaviour:
   currentInformationObject: {fileID: 7228565532630783133}
   upgradeInformationObject: {fileID: 239844300067386913}
   maxLevelInformationObject: {fileID: 8123721410029228563}
-  turretAttackSpeed: 0.6
+  turretAttackSpeed: 1.5
   attackSpeedLevels:
-  - 0.8
-  - 1.1
   - 1.5
-  - 2
+  - 1.8
+  - 2.1
+  - 2.5
   turretProjectileSpeed: 3
   turretProjectileScale: 1.3
-  turretDamage: 3
+  turretDamage: 5
   damageLevels: 050000000a0000000f00000014000000
   turretRange: 2
   rangeLevels:
@@ -1736,9 +1736,9 @@ MonoBehaviour:
   - 2.2
   - 2.4
   - 2.6
-  turretLuckDamage: 10
-  luckDamageLevels: 0a0000000f000000160000001e000000
-  projectileSpawnYOffset: 0
+  turretLuckDamage: 25
+  luckDamageLevels: 19000000320000004b00000078000000
+  projectileSpawnYOffset: 0.06
   turretLevel: 0
   currentFocus: 0
   enemyList: []

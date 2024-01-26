@@ -33,6 +33,7 @@ public class RewardAnimation : MonoBehaviour
         {
             if(rewardAmount > 0)
             {
+                gameController.GetComponent<GameController>().emberTotalCount += rewardAmount;
                 gameController.GetComponent<GameController>().emberCount += rewardAmount;
             }
             Destroy(gameObject);

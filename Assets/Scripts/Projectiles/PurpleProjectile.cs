@@ -24,11 +24,9 @@ public class PurpleProjectile : MonoBehaviour
     {
         gameController = GameObject.Find("Game Controller");
         gameObject.transform.position = startPosition;
-        randomDamage = projectileDamage + (int)Mathf.Ceil(Random.Range(-1 * projectileLuckDamage, projectileLuckDamage));
-        if (randomDamage < 0) { randomDamage = 0; }
-        int adjustDamageForScale = randomDamage;
-        if(adjustDamageForScale == 0) { adjustDamageForScale++; }
-        gameObject.transform.localScale *= 2 * (randomDamage / (projectileDamage + projectileLuckDamage));
+        randomDamage = projectileDamage + (int)Mathf.Ceil(Random.Range(-1 * (float)projectileLuckDamage, (float)projectileLuckDamage));
+        if (randomDamage <= 0) { randomDamage = 1; }
+        gameObject.transform.localScale *= 2 * ((float)randomDamage / ((float)projectileDamage + (float)projectileLuckDamage));
     }
 
     private void TrackEnemy()

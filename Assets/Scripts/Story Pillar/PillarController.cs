@@ -7,6 +7,7 @@ public class PillarController : MonoBehaviour
     public GameObject gameController;
     public GameObject menuOptions;
     public List<GameObject> menuOptionsList;
+    public GameObject textObject;
 
     public bool currentFocus;
 
@@ -28,6 +29,9 @@ public class PillarController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (currentFocus) { textObject.SetActive(false); }
+        if (!currentFocus) { textObject.SetActive(true); }
+
         if (gameController.GetComponent<GameController>().pauseMenuOpened) { return; }
 
         gameController.GetComponent<GameController>().MenuOptionsCheck(ref currentFocus, menuOptions, menuOptionsList);

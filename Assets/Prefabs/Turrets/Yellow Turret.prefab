@@ -1719,16 +1719,16 @@ MonoBehaviour:
   currentInformationObject: {fileID: 7228565532630783133}
   upgradeInformationObject: {fileID: 239844300067386913}
   maxLevelInformationObject: {fileID: 8123721410029228563}
-  turretAttackSpeed: 1.8
+  turretAttackSpeed: 3
   attackSpeedLevels:
-  - 1.8
-  - 2.2
-  - 2.7
-  - 3.3
+  - 3
+  - 3.5
+  - 4
+  - 4.6
   turretProjectileSpeed: 4
   turretProjectileScale: 0.7
-  turretDamage: 2
-  damageLevels: 02000000030000000400000005000000
+  turretDamage: 6
+  damageLevels: 06000000080000000a0000000c000000
   turretRange: 2.5
   rangeLevels:
   - 2.5

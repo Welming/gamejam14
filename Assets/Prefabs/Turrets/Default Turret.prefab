@@ -2129,10 +2129,10 @@ MonoBehaviour:
   menuOptions: {fileID: 7774236100404292257}
   confirmButton: {fileID: 463706917496917313}
   menuOptionsList: []
-  turretAttackSpeed: 0.7
+  turretAttackSpeed: 0.8
   turretProjectileSpeed: 3
   turretProjectileScale: 1.5
-  turretDamage: 6
+  turretDamage: 10
   turretRange: 2
   projectileSpawnYOffset: 0.06
   currentFocus: 0
